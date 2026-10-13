@@ -1,0 +1,1358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Constitution · NICE-SA FUTA</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --hd: #07421f;
+        --g: #007534;
+        --gd: #004a21;
+        --y: #fcd116;
+        --bg: #fff;
+        --soft: #e7f4ec;
+        --tx: #12301f;
+        --mut: #4d6a58;
+        --bd: #c6e0cf;
+        --card: #fff;
+        --logo: url(nicesa_logo.jpeg);
+        --gy: linear-gradient(135deg, #ffe35c, #fcd116 60%, #f2bf00);
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 80px);
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--tx);
+        font:
+          16px/1.65 "Plus Jakarta Sans",
+          "DM Sans",
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: 1170px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* header (matched to about page) */
+      header {
+        position: sticky;
+        top: env(safe-area-inset-top, 0px);
+        z-index: 50;
+        transition:
+          box-shadow 0.3s,
+          background 0.3s;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 10px 30px -14px rgba(0, 60, 28, 0.35);
+      }
+      header .bar {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        height: 62px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #0a5a2a;
+        font-weight: 800;
+        font-size: 18px;
+        letter-spacing: 0.2px;
+        line-height: 1.1;
+        white-space: nowrap;
+      }
+      .mark {
+        width: 48px;
+        height: 48px;
+        flex: none;
+        border-radius: 50%;
+        background: var(--logo) center/88% no-repeat #fff;
+        box-shadow:
+          0 0 0 2px rgba(0, 132, 61, 0.18),
+          0 6px 14px -6px rgba(0, 60, 28, 0.35);
+        transition: transform 0.4s;
+      }
+      .brand:hover .mark {
+        transform: rotate(-8deg) scale(1.06);
+      }
+      header nav {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      header nav a {
+        color: #1d3b2a;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.15;
+        padding: 10px 18px;
+        border-radius: 999px;
+        white-space: nowrap;
+        transition: 0.25s;
+      }
+      header nav a:hover,
+      header nav a.on {
+        color: #0a5a2a;
+        background: #e7f4ec;
+      }
+      header nav a.jn {
+        margin-left: 23px;
+        padding: 16px 27px;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 1.5;
+        border-radius: 16px;
+        color: #04361b;
+        background: #fcd116;
+        box-shadow: 0 10px 24px -8px rgba(252, 209, 22, 0.85);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      header nav a.jn:hover {
+        color: #04361b;
+        background: #fcd116;
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 14px 28px -8px rgba(252, 209, 22, 0.95);
+      }
+      .burger {
+        display: none;
+        margin-left: auto;
+        background: transparent;
+        border: 0;
+        color: #0a5a2a;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        font-size: 26px;
+        cursor: pointer;
+      }
+      :focus-visible {
+        outline: 3px solid var(--g);
+        outline-offset: 3px;
+        border-radius: 8px;
+      }
+      footer :focus-visible,
+      .hero :focus-visible,
+      .cta :focus-visible {
+        outline-color: #fff;
+      }
+
+      /* buttons */
+      .btn {
+        background: var(--y);
+        color: #10301c;
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 20px;
+        font: 700 0.95rem system-ui;
+        cursor: pointer;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px #0004;
+      }
+
+      /* hero */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background: #087034;
+        color: #fff;
+        padding: 64px 0 80px;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(#ffffff1f 1px, transparent 1px),
+          linear-gradient(90deg, #ffffff1f 1px, transparent 1px);
+        background-size: 36px 36px;
+        -webkit-mask-image: linear-gradient(90deg, transparent, #000 75%);
+        mask-image: linear-gradient(90deg, transparent, #000 75%);
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: -130px;
+        top: -130px;
+        width: 440px;
+        height: 440px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #ffffff2e, transparent 70%);
+      }
+      .hero > * {
+        position: relative;
+        z-index: 1;
+      }
+      .pill {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        background: #fff;
+        border: 1px solid #fff;
+        color: #087034;
+        border-radius: 999px;
+        padding: 6px 14px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        margin-bottom: 16px;
+      }
+      .pill i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #087034;
+        box-shadow: 0 0 0 4px #08703440;
+      }
+      .hero h1 {
+        font-size: clamp(2rem, 5.5vw, 3.6rem);
+        line-height: 1.1;
+        margin: 0 0 12px;
+      }
+      .hero h1 span {
+        color: #fff;
+        display: inline-block;
+        position: relative;
+      }
+      .hero h1 span::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 2px;
+        height: 8px;
+        border-radius: 6px;
+        background: #fff;
+        opacity: 0.3;
+        z-index: -1;
+      }
+      .hero p {
+        max-width: 560px;
+        margin: 0 0 22px;
+        color: #e3f3ea;
+      }
+      .hero .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+      .hero .ghost {
+        border-color: #fff;
+        color: #fff;
+      }
+      .hero .ghost:hover {
+        background: #fff;
+        color: #087034;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 14px;
+        max-width: 1170px;
+        margin: -36px auto 0;
+        padding: 0 24px;
+        position: relative;
+        z-index: 2;
+      }
+      .stat {
+        background: var(--card);
+        border: 1px solid var(--bd);
+        border-top: 4px solid var(--y);
+        border-radius: 14px;
+        padding: 14px 16px;
+        box-shadow: 0 8px 22px #0075341f;
+      }
+      .stat b {
+        display: block;
+        font-size: 1.7rem;
+        color: var(--g);
+      }
+      .stat small {
+        color: var(--mut);
+      }
+      main {
+        max-width: 1170px;
+        margin: 40px auto;
+        padding: 0 24px;
+      }
+      .tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      input[type="search"] {
+        flex: 1;
+        min-width: 200px;
+        padding: 12px 16px;
+        border-radius: 999px;
+        border: 2px solid var(--bd);
+        background: var(--card);
+        color: var(--tx);
+        font: inherit;
+      }
+      input[type="search"]:focus {
+        outline: 0;
+        border-color: var(--g);
+      }
+      .ghost {
+        background: transparent;
+        border: 2px solid var(--g);
+        color: var(--g);
+        border-radius: 999px;
+        padding: 10px 16px;
+        font: 600 0.9rem system-ui;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s,
+          background 0.25s,
+          color 0.25s;
+        animation: pg 2.2s ease-out infinite;
+      }
+      .ghost::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -70%;
+        width: 45%;
+        height: 100%;
+        background: linear-gradient(
+          100deg,
+          transparent,
+          #00753430,
+          transparent
+        );
+        transform: skewX(-20deg);
+        animation: sh 3s ease-in-out infinite;
+      }
+      .hero .ghost {
+        animation-name: pw;
+      }
+      .hero .ghost::before {
+        background: linear-gradient(
+          100deg,
+          transparent,
+          #ffffff59,
+          transparent
+        );
+      }
+      #none,
+      #none::before {
+        animation-delay: 0.9s;
+      }
+      .ghost:hover {
+        background: var(--g);
+        color: #fff;
+        transform: translateY(-3px) scale(1.06);
+        box-shadow: 0 10px 22px #00753455;
+        animation: none;
+      }
+      .ghost:active {
+        transform: scale(0.95);
+      }
+      .chips {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 6px 0 14px;
+      }
+      .chips a {
+        flex: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--soft);
+        border: 1px solid var(--bd);
+        color: var(--g);
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        transition: 0.2s;
+      }
+      .chips a:hover {
+        background: var(--g);
+        color: #fff;
+      }
+      #cnt {
+        margin: 0 0 6px;
+        font-size: 0.9rem;
+        color: var(--mut);
+        min-height: 1.2em;
+      }
+      details.art {
+        background: var(--card);
+        border: 1px solid var(--bd);
+        border-left: 5px solid var(--g);
+        border-radius: 14px;
+        margin: 12px 0;
+        overflow: hidden;
+      }
+      details.art[open] {
+        border-left-color: var(--y);
+        box-shadow: 0 8px 24px #0075341a;
+      }
+      details.art > summary {
+        cursor: pointer;
+        list-style: none;
+        padding: 16px 18px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      details.art > summary::-webkit-details-marker {
+        display: none;
+      }
+      .tag {
+        background: var(--g);
+        color: #fff;
+        border-radius: 8px;
+        padding: 2px 10px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+      }
+      summary::after {
+        content: "+";
+        margin-left: auto;
+        color: var(--g);
+        font-size: 1.5rem;
+      }
+      details[open] > summary::after {
+        content: "−";
+      }
+      .body {
+        padding: 0 18px 16px;
+      }
+      .sec {
+        border-top: 1px dashed var(--bd);
+        padding: 12px 0;
+      }
+      .sec h4 {
+        margin: 0 0 6px;
+        color: var(--g);
+      }
+      .sec ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+      .sec li {
+        margin: 3px 0;
+      }
+      .sec p {
+        margin: 0;
+      }
+      .pre {
+        background: var(--soft);
+        border-left: 5px solid var(--y);
+        border-radius: 12px;
+        padding: 16px 20px;
+        color: var(--mut);
+        margin-bottom: 10px;
+      }
+      mark {
+        background: var(--y);
+        color: #000;
+        border-radius: 3px;
+      }
+      .cta {
+        margin: 36px 0;
+        background: linear-gradient(135deg, var(--g), var(--gd));
+        color: #fff;
+        border-radius: 18px;
+        padding: 26px;
+        text-align: center;
+      }
+      .cta h3 {
+        margin: 0 0 6px;
+      }
+      #msg {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        min-height: 1.2em;
+      }
+      .note {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        margin-top: 28px;
+        padding: 20px 22px;
+        background: linear-gradient(135deg, var(--soft), var(--card));
+        border: 1px solid var(--bd);
+        border-left: 6px solid var(--g);
+        border-radius: 16px;
+        box-shadow: 0 8px 22px #00753417;
+      }
+      .note .ni {
+        flex: none;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: var(--g);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font:
+          italic 700 1.1rem Georgia,
+          serif;
+      }
+      .note p {
+        margin: 0 0 10px;
+        font-weight: 600;
+      }
+      .note .cr {
+        display: inline-block;
+        background: var(--card);
+        border: 1px solid var(--bd);
+        color: var(--g);
+        border-radius: 999px;
+        padding: 5px 14px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      /* footer (matched to about page) */
+      footer {
+        background: linear-gradient(
+          145deg,
+          #0a6b32 0%,
+          #0d8f45 52%,
+          #15ac5a 100%
+        );
+        color: #fff;
+        border-top: 4px solid #fcd116;
+      }
+      .fg {
+        display: grid;
+        grid-template-columns: 1.41fr 1fr 1fr 1.25fr;
+        gap: 40px;
+        padding: 58px 0 50px;
+      }
+      footer h4 {
+        color: #fff;
+        margin: 0 0 16px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+      footer .ln a {
+        display: block;
+        padding: 6px 0;
+        font-size: 15px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.95);
+        transition: 0.25s;
+      }
+      footer .ln a:hover {
+        color: #d6f5e3;
+        transform: translateX(5px);
+      }
+      footer p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.95);
+        margin: 4px 0 0;
+        max-width: 300px;
+      }
+      .soc {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 13px;
+        margin-top: 5px;
+      }
+      .soc a {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.42);
+        color: #fff;
+        transition: 0.3s;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .soc svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+      .soc a:hover {
+        transform: translateY(-3px);
+      }
+      .copy {
+        border-top: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 20px 0 22px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #fff;
+      }
+      #top {
+        position: fixed;
+        right: 20px;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        border: 0;
+        background: var(--gy);
+        color: #04361b;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 12px 24px -8px rgba(0, 80, 36, 0.6);
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+        transition: 0.35s;
+        z-index: 40;
+      }
+      #top.s {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+
+      @keyframes pg {
+        0% {
+          box-shadow: 0 0 0 0 #00753466;
+        }
+        70%,
+        100% {
+          box-shadow: 0 0 0 12px #00753400;
+        }
+      }
+      @keyframes pw {
+        0% {
+          box-shadow: 0 0 0 0 #ffffff80;
+        }
+        70%,
+        100% {
+          box-shadow: 0 0 0 12px #ffffff00;
+        }
+      }
+      @keyframes sh {
+        0%,
+        55% {
+          left: -70%;
+        }
+        100% {
+          left: 140%;
+        }
+      }
+      @keyframes bn {
+        0%,
+        100% {
+          transform: translateY(-2px);
+        }
+        50% {
+          transform: translateY(5px);
+        }
+      }
+      .ar {
+        display: inline-block;
+        animation: bn 1.1s ease-in-out infinite;
+      }
+
+      @media (max-width: 1080px) {
+        .burger {
+          display: block;
+        }
+        header nav {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          margin: 0;
+          padding: 8px 22px 18px;
+          max-height: calc(100vh - 62px);
+          overflow-y: auto;
+          background: #fff;
+          border-top: 1px solid rgba(0, 132, 61, 0.12);
+          box-shadow:
+            0 18px 34px -14px rgba(252, 209, 22, 0.55),
+            0 8px 20px -12px rgba(0, 0, 0, 0.25);
+          transform: translateY(-10px);
+          opacity: 0;
+          visibility: hidden;
+          transition:
+            transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+            opacity 0.25s,
+            visibility 0.35s;
+        }
+        header nav.o {
+          transform: none;
+          opacity: 1;
+          visibility: visible;
+        }
+        header nav a,
+        header nav a:hover,
+        header nav a.on {
+          color: #2b4636;
+          font-size: 15px;
+          font-weight: 600;
+          padding: 9px 0;
+          border-radius: 0;
+          background: none;
+        }
+        header nav a.jn,
+        header nav a.jn:hover {
+          margin: 12px 0 0;
+          padding: 14px;
+          text-align: center;
+          border-radius: 16px;
+          font-size: 15px;
+          font-weight: 800;
+          color: #04361b;
+          background: #fcd116;
+        }
+        header.mo {
+          background: linear-gradient(90deg, #fff, #f1f4ef);
+          box-shadow: none;
+        }
+      }
+      @media (max-width: 980px) {
+        .fg {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 760px) {
+        .hero {
+          padding: 48px 0 72px;
+        }
+        .fg {
+          gap: 40px 28px;
+          padding: 48px 0 34px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition-duration: 0.01ms !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="hd">
+      <div class="wrap bar">
+        <a class="brand" href="index.html"
+          ><span class="mark" role="img" aria-label="NICE-SA logo"></span
+          ><span>NICE-SA FUTA</span></a
+        >
+        <button
+          class="burger"
+          id="bg"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <nav id="nv">
+          <a href="index.html">Home</a><a href="about.html">About</a
+          ><a href="lead.html">Leadership</a><a href="blog.html">Blog/News</a
+          ><a href="gallery.html">Gallery</a
+          ><a class="on" href="constitution.html">Constitution</a
+          ><a href="contact.html">Contact</a>
+          <a class="jn" href="contact.html">Join NICE-SA</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="wrap">
+        <span class="pill"><i></i>Official student constitution</span>
+        <h1>NICE-SA FUTA <span>Constitution</span></h1>
+        <p>
+          The rules for elections, meetings, finances and conduct of the
+          Nigerian Institution of Civil Engineers Students' Affiliate, Federal
+          University of Technology, Akure. 2024, as amended.
+        </p>
+        <div class="row">
+          <a class="ghost" href="#list"
+            >Read the articles <span class="ar">↓</span></a
+          >
+        </div>
+      </div>
+    </section>
+    <section class="stats">
+      <div class="stat"><b>12</b><small>Executive offices</small></div>
+      <div class="stat"><b>2.50</b><small>Minimum CGPA to contest</small></div>
+      <div class="stat"><b>48 hrs</b><small>To bank any money</small></div>
+      <div class="stat">
+        <b>2/3</b><small>Majority for removal &amp; amendment</small>
+      </div>
+      <div class="stat"><b>41</b><small>Sections in 11 articles</small></div>
+    </section>
+    <main>
+      <div class="tools">
+        <input
+          type="search"
+          id="q"
+          placeholder="Search the constitution (e.g. CGPA, treasurer, 48 hours)"
+          aria-label="Search the constitution"
+        />
+        <button class="ghost" id="all">Expand all</button
+        ><button class="ghost" id="none">Collapse all</button>
+      </div>
+      <div class="chips" id="chips" aria-label="Jump to article"></div>
+      <p id="cnt" role="status"></p>
+      <div class="pre" id="pre">
+        <b>Preamble.</b> We, the students of Civil Engineering at FUTA,
+        established NICE-SA FUTA to promote our members' interests, provide a
+        forum for discussion, and build leaders for the technological
+        development of Nigeria and the world.
+      </div>
+      <div id="list"></div>
+      <div class="cta">
+        <h3>Get the signed document</h3>
+        <p>
+          Download the complete constitution as a PDF to read offline or share.
+        </p>
+        <button class="btn" data-dl>⬇ Download PDF</button>
+        <div id="msg" role="status"></div>
+      </div>
+      <div class="note">
+        <span class="ni">i</span>
+        <div>
+          <p>
+            Summaries on this page are a guide. The downloadable PDF is the
+            authoritative text.
+          </p>
+          <span class="cr"
+            >Credit: Constitution Review Committee, 23/24 parliamentary
+            session.</span
+          >
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="fg">
+          <div>
+            <h4>NICE-SA FUTA</h4>
+            <p>
+              The student association for civil engineers at the Federal
+              University of Technology, Akure.
+            </p>
+          </div>
+          <div class="ln">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a><a href="about.html">About</a
+            ><a href="lead.html">Leadership</a><a href="blog.html">Events</a
+            ><a href="blog.html">Blog/News</a>
+          </div>
+          <div class="ln">
+            <h4>Resources</h4>
+            <a href="constitution.html">Constitution</a
+            ><a href="about.html">Membership</a
+            ><a href="gallery.html">Gallery</a
+            ><a href="lead.html">Administrations</a
+            ><a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Connect With Us</h4>
+            <div class="soc">
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                title="Instagram"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                  /></svg></a
+              ><a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+                title="Facebook"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  /></svg></a
+              ><a
+                href="https://x.com/"
+                target="_blank"
+                rel="noopener"
+                aria-label="X"
+                title="X"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"
+                  /></svg></a
+              ><a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  /></svg></a
+              ><a
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp"
+                title="WhatsApp"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                  /></svg
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="copy">
+          © 2026 NICE-SA FUTA. All Rights Reserved. Federal University of
+          Technology, Akure.
+        </div>
+      </div>
+    </footer>
+
+    <button id="top" aria-label="Back to top">↑</button>
+
+    <script>
+      const D = [
+        [
+          "A",
+          "Name",
+          [
+            [
+              "1",
+              "Name",
+              "The association is known as the <b>Nigerian Institution of Civil Engineers Students' Affiliate, The Federal University of Technology, Akure Chapter (NICE-SA FUTA Chapter)</b>.",
+            ],
+          ],
+        ],
+        [
+          "B",
+          "Aims and Objectives",
+          [
+            [
+              "2",
+              "Aims",
+              "Contribute to the growth of Civil Engineering in Nigeria and the world|Create a forum to exchange knowledge and ideas and discuss problems affecting the department|Promote and protect the ethics of Civil Engineering",
+            ],
+          ],
+        ],
+        [
+          "C",
+          "Membership and Conduct",
+          [
+            [
+              "3",
+              "Membership",
+              "Mandatory for all matriculated Civil Engineering students of FUTA|Not open to preliminary students",
+            ],
+            [
+              "4",
+              "Duties of a Member",
+              "Participate effectively and regularly in association activities|Pay annual dues and levies at the start of every session|Dues are agreed by congress and paid before course registration|Every member may vote and be voted for",
+            ],
+            [
+              "5",
+              "Code of Conduct",
+              "Members must behave in an orderly manner at general meetings|Erring members face the disciplinary committee set up by the executive",
+            ],
+          ],
+        ],
+        [
+          "D",
+          "Patrons and Advisers",
+          [
+            [
+              "6",
+              "Patron / Patroness",
+              "The HOD of Civil Engineering is Grand Patron|Anyone who supports the advancement of Civil Engineering may be appointed patron|Patrons who are FUTA staff are <b>staff advisers</b>, appointed for <b>3 years</b>",
+            ],
+            [
+              "7",
+              "Duties of Patrons",
+              "Advise the association|Meet the executives or general assembly at least twice a semester|Assist financially and morally|Support all association programmes",
+            ],
+            [
+              "8",
+              "Legal Advisers",
+              "All judges of the FUTASU Judicial Council and barristers of the FUTASU Bar Association (FBA)",
+            ],
+          ],
+        ],
+        [
+          "E",
+          "The Executive Committee",
+          [
+            [
+              "10",
+              "Officers",
+              "President, Vice-President, General Secretary, Assistant General Secretary (AGS), Financial Secretary, Treasurer|Public Relations Officer (PRO), Welfare Director, Director of Sports, Director of Socials, Ex-officio members, PRO II",
+            ],
+            [
+              "11",
+              "Duties of the Executive",
+              "Set up committees as needed and specify their duties|Committee members are nominated by the general assembly through free and fair elections|Meet from time to time|Give a stewardship report to congress at least <b>one month</b> before tenure ends",
+            ],
+            [
+              "12",
+              "Duties of Each Officer",
+              "<b>President:</b> chief executive and spokesman; presides over meetings; co-signatory on finances; presents stewardship report at the last semester meeting; votes only to break a tie; approves representatives; bank signatory|<b>Vice-President:</b> assists and acts for the President; general welfare; orientation for fresh members; chairs the academic committee|<b>General Secretary:</b> secretariat duties, correspondence, summons meetings, attendance books, minutes|<b>AGS:</b> assists the Gen. Sec.; maintains secretariat; issues executive ID cards; takes minutes in absence and at executive meetings|<b>Financial Secretary:</b> records dues; submits account statement; hands money to the Treasurer within <b>48 hours</b>; presents the budget; bank signatory; issues and keeps receipts; needs the President's documented approval to release money|<b>Treasurer:</b> bank signatory; imprest account of <b>not more than ₦5,000</b>; banks all money within <b>48 hours</b>; keeps financial records|<b>PRO:</b> publicity, links with other associations, presides over publicity committee, public enlightenment|<b>Welfare Director:</b> welfare of financial members; chairs the association's week committee; represents on welfare committees|<b>Director of Sports:</b> chairs sports committee; coordinates games; liaises with university sports officials|<b>Director of Socials:</b> organises social activities with executive approval|<b>Ex-officio (2):</b> from the immediate past executive; student advisers who vote and deliberate|<b>PRO II:</b> jointly with PRO on publicity; secretary of publicity committee",
+            ],
+            [
+              "13",
+              "Privileges",
+              "Executives may use the association's secretariat at any time during their tenure",
+            ],
+          ],
+        ],
+        [
+          "F",
+          "Elections and Discipline",
+          [
+            [
+              "14",
+              "Election of the Executive",
+              "Held between the <b>13th week</b> and the last week of first semester|All financial members may vote|Financial members with CGPA of at least <b>2.50</b> may be voted for|Outgoing executive sets up an electoral committee at the last congress|Bye-election for any vacant office",
+            ],
+            [
+              "15",
+              "Eligibility to Stand",
+              "Contestant must be a financial member with leadership qualities, good conduct record and agreement to the code|CGPA not below <b>2.50</b>|Nomination supported by at least <b>5 financial members</b>, and attendance at one congress in the last session|Breaking any rule nullifies candidacy|Direct Entry students may stand",
+            ],
+            [
+              "16",
+              "Electoral Commission",
+              "A chairman and four other members, constituted at the last general meeting at least one month before tenure ends|Members cannot vote or be voted for while serving|Guided by fair play and justice|Chairman may cancel the election if it is no longer free and fair",
+            ],
+            [
+              "17",
+              "Auxiliary Provisions",
+              "Elections at least two weeks before the end of first semester|Forms and closing date published at least <b>4 weeks</b> before election|Secret ballot; school ID or dues receipt required|Must have been a member for at least a session (except AGS and PRO II)|<b>400 level</b> students cannot contest; <b>100 level</b> only for AGS and PRO II|Deadlock leads to a run-off between top two|A sole candidate needs a <b>two-thirds</b> majority of votes cast",
+            ],
+            ["18", "Bye-Election", "Held within <b>2 weeks</b> of a vacancy"],
+            [
+              "19",
+              "Disciplinary Conduct of Officers",
+              "Resignation needs <b>14 days'</b> notice and general assembly acceptance|Gross misconduct: removal by <b>2/3</b> of members present|Property handed over within <b>10 working days</b>|Vote of no confidence: 3-member caretaker committee for up to 10 working days, then a new election|Guilty officers get no certificate of merit; accused officers are suspended pending congress",
+            ],
+          ],
+        ],
+        [
+          "G",
+          "Standing Committees",
+          [
+            [
+              "20",
+              "Academic Committee",
+              "Formed at the first general meeting; Vice-President chairs with five appointed members|Liaises with authorities on academic problems; dissolves each tenure",
+            ],
+            [
+              "21",
+              "Publicity Committee",
+              "Five members headed by the PRO, handling publicity of association activities",
+            ],
+            [
+              "22",
+              "Audit Committee",
+              "Chairman and three members elected by congress at least <b>21 working days</b> before tenure ends|Members sit on no other committee|Sole responsibility for auditing the accounts; dissolves once its report is accepted",
+            ],
+            [
+              "23",
+              "Disciplinary Committee",
+              "Chairman and four members elected separately at the first general assembly|Handles referred cases|Decisions can be reversed by a <b>4/5</b> majority of the general assembly",
+            ],
+          ],
+        ],
+        [
+          "H",
+          "General Assembly and Meetings",
+          [
+            [
+              "24",
+              "General Assembly",
+              "A general meeting of at least <b>2/3</b> of members|A chief whip is nominated at the start|Presided by the President (or Vice); minutes by the General or Assistant General Secretary",
+            ],
+            [
+              "25",
+              "Duties",
+              "The legislative body|Elects the executive and any caretaker committee|Elects representatives to NUESA, FUTASU, FUTASRC and others",
+            ],
+            [
+              "26",
+              "Meetings",
+              "At least two general meetings per semester|Committee reports presented at general meetings|<b>3 days'</b> notice, or 24 hours for an emergency meeting",
+            ],
+            [
+              "27",
+              "Decorum",
+              "Only the President (or Vice) and General Secretary sit at the high table|No speaking without the President's consent|Members stand when addressing the assembly",
+            ],
+          ],
+        ],
+        [
+          "I",
+          "Amendment and General Provisions",
+          [
+            [
+              "28",
+              "Amendment",
+              "Reviewable <b>every five years</b> by a resolution of at least 2/3 of congress present and voting, with a quorum|Constitution Review Committee of seven, elected by the general assembly, plus the two FUTA SRC honourables|Report approved by congress",
+            ],
+            [
+              "29",
+              "Collective Responsibility",
+              "All members of the Executive Council and committees share collective responsibility",
+            ],
+            [
+              "30",
+              "Certificate of Merit",
+              "Every active officer receives a certificate of merit|The secretary may write commendation letters to deserving members",
+            ],
+            [
+              "31",
+              "Code of Conduct (Congress)",
+              "Stand when speaking and address the President and congress|President decides who speaks first|Debate stays on the pending issue|The President may order a disruptive member out or bar them from voting",
+            ],
+          ],
+        ],
+        [
+          "J",
+          "Finance and Procedure",
+          [
+            [
+              "32",
+              "Finance",
+              "Sources: membership dues (set by FUTASU), voluntary donations, grants, proceeds from activities",
+            ],
+            [
+              "33",
+              "Revenue and Monies",
+              "All money is first paid into the association's bank account, with receipts issued|Signatories: President, Financial Secretary and Treasurer",
+            ],
+            [
+              "34",
+              "Financial Management",
+              "<b>10%</b> of dues each administration collects stays in the account at the end of its term",
+            ],
+            [
+              "35",
+              "Motions",
+              "Written, signed motions go to the Gen. Sec. at least <b>3 days</b> before the meeting|Motions appear on the order paper|Motions to alter the constitution need a majority with a quorum",
+            ],
+            [
+              "36–38",
+              "Amendments, Motions Without Notice, Point of Order",
+              "Amendments may leave out or insert words|Motions without notice include adjournment, putting the question, referral to committee and suspending standing order|A point of order is heard at any time except during voting",
+            ],
+            [
+              "39–40",
+              "Adjournment and Voting",
+              "The mover may reply to an adjournment motion, then voting follows|Presiding officer votes only to break a tie|Voting by show of hands unless the mover requests a secret ballot",
+            ],
+          ],
+        ],
+        [
+          "K",
+          "Oath of Office",
+          [
+            [
+              "41",
+              "Oath of Office",
+              "Newly elected executives take the oath before the presiding Judge of the FUTASU Judicial Council|Copies are kept by the electoral commission",
+            ],
+          ],
+        ],
+      ];
+
+      const $ = (id) => document.getElementById(id);
+      const L = $("list"),
+        chips = $("chips"),
+        q = $("q"),
+        cnt = $("cnt"),
+        pre = $("pre"),
+        msg = $("msg");
+      const orig = new Map();
+
+      D.forEach(([a, t, s]) => {
+        const d = document.createElement("details");
+        d.className = "art";
+        d.id = a;
+        const body = s
+          .map(([n, h, x]) => {
+            const p = x.split("|");
+            return (
+              '<div class="sec"><h4>' +
+              h +
+              "</h4>" +
+              (p.length > 1
+                ? "<ul>" + p.map((i) => "<li>" + i + "</li>").join("") + "</ul>"
+                : "<p>" + x + "</p>") +
+              "</div>"
+            );
+          })
+          .join("");
+        d.innerHTML =
+          '<summary><span class="tag">Article ' +
+          a +
+          "</span>" +
+          t +
+          '</summary><div class="body">' +
+          body +
+          "</div>";
+        L.appendChild(d);
+        orig.set(d, body);
+
+        const c = document.createElement("a");
+        c.href = "#" + a;
+        c.textContent = a;
+        c.title = "Article " + a + ": " + t;
+        c.setAttribute("aria-label", "Jump to Article " + a + ": " + t);
+        c.onclick = () => {
+          if (q.value) {
+            q.value = "";
+            run();
+          }
+          d.open = true;
+        };
+        chips.appendChild(c);
+      });
+
+      const ds = () => [...L.children];
+      $("all").onclick = () => ds().forEach((d) => (d.open = true));
+      $("none").onclick = () => ds().forEach((d) => (d.open = false));
+
+      /* search with highlighting */
+      const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const hl = (html, v) =>
+        html.replace(
+          new RegExp("(<[^>]*>)|(" + esc(v) + ")", "gi"),
+          (m, tag, hit) => (tag ? tag : "<mark>" + hit + "</mark>"),
+        );
+      function run() {
+        const v = q.value.trim();
+        let n = 0;
+        ds().forEach((d) => {
+          const body = d.querySelector(".body");
+          body.innerHTML = orig.get(d);
+          d.hidden = false;
+          if (!v) return;
+          const hit = d.textContent.toLowerCase().includes(v.toLowerCase());
+          d.hidden = !hit;
+          if (hit) {
+            n++;
+            d.open = true;
+            body.innerHTML = hl(orig.get(d), v);
+          }
+        });
+        pre.hidden = !!v;
+        cnt.textContent = v
+          ? n
+            ? n + " article" + (n > 1 ? "s" : "") + ' match "' + v + '"'
+            : 'No article matches "' + v + '".'
+          : "";
+      }
+      q.addEventListener("input", run);
+
+      /* open an article when linked by hash (e.g. constitution.html#F) */
+      function openHash() {
+        const h = location.hash.slice(1);
+        const d = h && document.getElementById(h);
+        if (d && d.tagName === "DETAILS") d.open = true;
+      }
+      addEventListener("hashchange", openHash);
+      openHash();
+
+      /* PDF download */
+      function dl() {
+        const a = document.createElement("a");
+        a.href = "NICE-SA_FUTA_Constitution_2024.pdf";
+        a.download = "NICE-SA_FUTA_Constitution_2024.pdf";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        msg.textContent =
+          "Starting download… If nothing happens, make sure NICE-SA_FUTA_Constitution_2024.pdf is in the same folder as this page.";
+      }
+      document.querySelectorAll("[data-dl]").forEach((b) => (b.onclick = dl));
+
+      /* header menu + back to top */
+      const hd = $("hd"),
+        bg = $("bg"),
+        nv = $("nv"),
+        tp = $("top");
+      bg.onclick = () => {
+        const o = nv.classList.toggle("o");
+        bg.setAttribute("aria-expanded", o);
+        bg.textContent = o ? "✕" : "☰";
+        hd.classList.toggle("mo", o);
+      };
+      nv.addEventListener("click", (e) => {
+        if (e.target.tagName === "A") {
+          nv.classList.remove("o");
+          hd.classList.remove("mo");
+          bg.textContent = "☰";
+        }
+      });
+      addEventListener(
+        "scroll",
+        () => tp.classList.toggle("s", scrollY > 500),
+        { passive: true },
+      );
+      tp.onclick = () => scrollTo({ top: 0 });
+    </script>
+  </body>
+</html>

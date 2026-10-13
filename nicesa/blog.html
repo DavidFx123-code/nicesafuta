@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light only" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Blog / News | NICE-SA FUTA</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light only;
+        --g: #0b7a3b;
+        --gd: #06471f;
+        --gl: #e6f4ea;
+        --y: #ffd21a;
+        --bg: #f4f8f5;
+        --card: #fff;
+        --tx: #10231a;
+        --mu: #53655b;
+        --bd: #dbe7de;
+        --hd: #fff;
+        --brand: #06471f;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        background: var(--bg);
+      }
+      body {
+        font-family: "DM Sans", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--tx);
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      h1,
+      h2,
+      h3,
+      .brand {
+        font-family: "Bricolage Grotesque", "DM Sans", sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      svg.i {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex: none;
+      }
+
+      /* HEADER (matches reference) */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--hd);
+        box-shadow: 0 2px 18px rgba(6, 71, 31, 0.12);
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+      .bar {
+        max-width: 1200px;
+        margin: auto;
+        padding: 3px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 62px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        color: var(--brand);
+        font-size: 1.3rem;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+      }
+      .brand img {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      nav a {
+        padding: 9px 17px;
+        border-radius: 999px;
+        font-weight: 500;
+        font-size: 1.06rem;
+        color: var(--tx);
+        transition: 0.2s;
+      }
+      nav a:hover,
+      nav a.on {
+        background: var(--gl);
+        color: var(--g);
+      }
+      nav a.on {
+        color: var(--g);
+      }
+      .join {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 56px;
+        padding: 0 27px;
+        background: var(--y);
+        color: #2b2300;
+        font-weight: 700;
+        font-size: 1.06rem;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(255, 210, 26, 0.45);
+        transition: 0.2s;
+        white-space: nowrap;
+      }
+      .join:hover {
+        transform: translateY(-2px);
+        background: #ffdc45;
+      }
+      nav .join-m {
+        display: none;
+      }
+      .burger {
+        display: none;
+        background: none;
+        border: 0;
+        color: var(--brand);
+        cursor: pointer;
+        padding: 6px;
+      }
+      .burger svg {
+        width: 32px;
+        height: 32px;
+        stroke-width: 2;
+      }
+      .burger .x {
+        display: none;
+      }
+      .burger[aria-expanded="true"] .x {
+        display: block;
+      }
+      .burger[aria-expanded="true"] .m {
+        display: none;
+      }
+      @media (max-width: 1100px) {
+        .bar {
+          padding: 3px 20px;
+        }
+        .burger {
+          display: block;
+        }
+        .join-d {
+          display: none;
+        }
+        nav {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 100%;
+          background: var(--hd);
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 6px 20px 20px;
+          box-shadow: 0 18px 30px rgba(0, 0, 0, 0.15);
+          display: none;
+        }
+        nav.open {
+          display: flex;
+        }
+        nav a,
+        nav a:hover,
+        nav a.on {
+          border-radius: 0;
+          padding: 13px 0;
+          background: none;
+          color: var(--tx);
+        }
+        nav .join-m {
+          display: flex;
+          margin-top: 12px;
+          height: 52px;
+          color: #2b2300;
+          background: var(--y);
+        }
+        nav .join-m:hover {
+          background: #ffdc45;
+          color: #2b2300;
+        }
+      }
+
+      /* PAGE TITLE */
+      .top {
+        max-width: 1200px;
+        margin: auto;
+        padding: 64px 40px 0;
+      }
+      .eyebrow {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--g);
+        background: var(--gl);
+        padding: 6px 14px;
+        border-radius: 999px;
+        margin-bottom: 16px;
+      }
+      .top h1 {
+        font-size: clamp(2.4rem, 6vw, 4rem);
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+      .top h1 em {
+        font-style: normal;
+        background: linear-gradient(120deg, var(--g), #14a355);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .top p {
+        color: var(--mu);
+        font-size: 1.15rem;
+        margin-top: 12px;
+        max-width: 520px;
+      }
+      .top:after {
+        content: "";
+        display: block;
+        width: 84px;
+        height: 5px;
+        border-radius: 5px;
+        background: var(--y);
+        margin-top: 26px;
+      }
+
+      /* TOOLS */
+      .tools {
+        max-width: 1200px;
+        margin: auto;
+        padding: 34px 40px 0;
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .chip {
+        font: inherit;
+        font-weight: 600;
+        font-size: 0.9rem;
+        border: 1.5px solid var(--bd);
+        background: var(--card);
+        color: var(--tx);
+        padding: 9px 18px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .chip:hover {
+        border-color: var(--g);
+        color: var(--g);
+      }
+      .chip.on {
+        background: var(--gd);
+        border-color: var(--gd);
+        color: #fff;
+        box-shadow: 0 8px 18px rgba(6, 71, 31, 0.25);
+      }
+      .sr {
+        position: relative;
+        flex: 1;
+        min-width: 230px;
+        max-width: 340px;
+      }
+      .sr svg {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--mu);
+      }
+      input {
+        width: 100%;
+        font: inherit;
+        color: var(--tx);
+        background: var(--card);
+        border: 1.5px solid var(--bd);
+        border-radius: 999px;
+        padding: 13px 18px 13px 46px;
+        transition: 0.2s;
+        color-scheme: light;
+      }
+      input:focus {
+        outline: 0;
+        border-color: var(--g);
+        box-shadow: 0 0 0 4px rgba(11, 122, 59, 0.15);
+      }
+
+      /* GREEN HERO */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        padding-bottom: 96px;
+        background:
+          radial-gradient(rgba(255, 255, 255, 0.12) 1.3px, transparent 1.4px) 0
+            0/26px 26px,
+          linear-gradient(135deg, #06471f 0%, #0b7a3b 55%, #14a355 100%);
+      }
+      .hero:before,
+      .hero:after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .hero:before {
+        width: 420px;
+        height: 420px;
+        right: -110px;
+        top: -150px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 210, 26, 0.38),
+          transparent 70%
+        );
+        animation: drift 10s ease-in-out infinite;
+      }
+      .hero:after {
+        width: 340px;
+        height: 340px;
+        left: -100px;
+        bottom: -120px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.22),
+          transparent 70%
+        );
+        animation: drift 12s ease-in-out infinite reverse;
+      }
+      @keyframes drift {
+        50% {
+          transform: translate(26px, 22px) scale(1.08);
+        }
+      }
+      .hero .top,
+      .hero .tools {
+        position: relative;
+        z-index: 1;
+      }
+      .hero .top {
+        padding-top: 56px;
+      }
+      .hero .eyebrow {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #fff;
+        backdrop-filter: blur(6px);
+      }
+      .hero .top h1 {
+        color: #fff;
+      }
+      .hero .top h1 em {
+        background: none;
+        color: var(--y);
+        -webkit-text-fill-color: var(--y);
+      }
+      .hero .top p {
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .hero .chip {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.35);
+        color: #fff;
+        backdrop-filter: blur(6px);
+      }
+      .hero .chip:hover {
+        background: rgba(255, 255, 255, 0.22);
+        border-color: #fff;
+        color: #fff;
+      }
+      .hero .chip.on {
+        background: var(--y);
+        border-color: var(--y);
+        color: #2b2300;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+      }
+      .hero input {
+        background: #fff;
+        border-color: transparent;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+      }
+      .hero .wave {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        width: 100%;
+        height: 56px;
+        display: block;
+        z-index: 1;
+      }
+      .hero .wave path {
+        fill: var(--bg);
+      }
+
+      /* POSTS */
+      .list {
+        max-width: 1200px;
+        margin: auto;
+        padding: 28px 40px 80px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+        align-items: start;
+      }
+      .post {
+        position: relative;
+        background: var(--card);
+        border: 1px solid var(--bd);
+        border-radius: 22px;
+        padding: 28px;
+        box-shadow: 0 12px 30px rgba(6, 71, 31, 0.06);
+        transition: 0.3s;
+        overflow: hidden;
+        animation: up 0.5s both;
+      }
+      .post:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--g), #4ade80);
+      }
+      .post:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 22px 46px rgba(6, 71, 31, 0.14);
+      }
+      .post.feat {
+        grid-column: 1/-1;
+        padding: 38px 40px;
+        background: linear-gradient(135deg, var(--gd), var(--g) 70%, #14a355);
+        color: #fff;
+        border: 0;
+      }
+      .post.feat:before {
+        background: var(--y);
+      }
+      .post.feat p,
+      .post.feat time {
+        color: rgba(255, 255, 255, 0.88);
+      }
+      .post.feat .pill {
+        background: rgba(255, 255, 255, 0.18);
+        color: #fff;
+      }
+      .post.feat h2 {
+        font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+      }
+      .post.feat .rm {
+        color: var(--y);
+      }
+      .post.feat .more {
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+      @keyframes up {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+      }
+      .meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+      .meta time {
+        color: var(--mu);
+        font-size: 0.86rem;
+        font-weight: 600;
+      }
+      .pill {
+        display: inline-block;
+        background: var(--gl);
+        color: var(--g);
+        font-weight: 700;
+        font-size: 0.78rem;
+        padding: 5px 13px;
+        border-radius: 999px;
+      }
+      .new {
+        background: var(--y);
+        color: #2b2300;
+        font-weight: 800;
+        font-size: 0.72rem;
+        padding: 4px 10px;
+        border-radius: 999px;
+        letter-spacing: 0.05em;
+      }
+      .post h2 {
+        font-size: 1.3rem;
+        line-height: 1.3;
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+      }
+      .post p {
+        color: var(--mu);
+      }
+      .more {
+        display: none;
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px dashed var(--bd);
+      }
+      .post.open .more {
+        display: block;
+      }
+      .rm {
+        font: inherit;
+        font-weight: 700;
+        color: var(--g);
+        background: none;
+        border: 0;
+        cursor: pointer;
+        margin-top: 16px;
+        padding: 0;
+      }
+      .rm:hover {
+        text-decoration: underline;
+      }
+      .none {
+        display: none;
+        text-align: center;
+        color: var(--mu);
+        padding: 50px 0;
+      }
+      @media (max-width: 760px) {
+        .top {
+          padding: 44px 20px 0;
+        }
+        .tools {
+          padding: 28px 20px 0;
+        }
+        .list {
+          padding: 24px 20px 64px;
+          grid-template-columns: 1fr;
+        }
+        .post.feat {
+          padding: 28px 24px;
+        }
+      }
+
+      /* FOOTER (matches reference) */
+      footer {
+        background: linear-gradient(160deg, #06471f, #0b7a3b 55%, #12a150);
+        color: #fff;
+        border-top: 5px solid var(--y);
+      }
+      .fg {
+        max-width: 1200px;
+        margin: auto;
+        padding: 56px 40px 0;
+        display: grid;
+        grid-template-columns: 303fr 215fr 214fr 268fr;
+        gap: 40px;
+      }
+      footer h3 {
+        font-size: 1.06rem;
+        font-weight: 700;
+        margin-bottom: 17px;
+        line-height: 1.4;
+      }
+      footer ul {
+        padding: 0;
+      }
+      footer li {
+        list-style: none;
+        margin: 10px 0;
+      }
+      footer li:first-child {
+        margin-top: 0;
+      }
+      footer li a {
+        transition: 0.2s;
+      }
+      footer li a:hover {
+        color: var(--y);
+        padding-left: 4px;
+      }
+      .fb p {
+        max-width: 300px;
+      }
+      .ic2 {
+        display: flex;
+        gap: 13px;
+        flex-wrap: wrap;
+      }
+      .ic2 a {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        display: grid;
+        place-items: center;
+        transition: 0.2s;
+      }
+      .ic2 a svg {
+        width: 18px;
+        height: 18px;
+      }
+      .ic2 a:hover {
+        background: var(--y);
+        color: #2b2300;
+        transform: translateY(-3px);
+      }
+      .copy {
+        max-width: 1200px;
+        margin: 56px auto 0;
+        padding: 0 40px;
+      }
+      .copy div {
+        border-top: 1px solid rgba(255, 255, 255, 0.22);
+        padding: 24px 0 30px;
+        font-size: 0.95rem;
+      }
+      @media (max-width: 900px) {
+        .fg {
+          grid-template-columns: 1fr 1fr;
+          padding: 48px 24px 0;
+        }
+        .copy {
+          padding: 0 24px;
+          margin-top: 40px;
+        }
+      }
+      @media (max-width: 520px) {
+        .fg {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .top-btn {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: var(--y);
+        color: #2b2300;
+        border: 0;
+        font-size: 1.3rem;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        display: none;
+        z-index: 40;
+        transition: 0.2s;
+      }
+      .top-btn.show {
+        display: block;
+      }
+      .top-btn:hover {
+        transform: translateY(-3px);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute">
+      <defs>
+        <symbol id="ig" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r=".6" />
+        </symbol>
+        <symbol id="fb" viewBox="0 0 24 24">
+          <path
+            d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+          />
+        </symbol>
+        <symbol id="tw" viewBox="0 0 24 24">
+          <path d="M4 4l16 16M20 4L4 20" />
+        </symbol>
+        <symbol id="li" viewBox="0 0 24 24">
+          <path
+            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"
+          />
+        </symbol>
+        <symbol id="wa" viewBox="0 0 24 24">
+          <path d="M3 21l1.7-5A9 9 0 1 1 8 19.3L3 21z" />
+          <path
+            d="M9 10c0 3 3 6 6 6l1-1.5-2-1-1 .5c-1-.5-2-1.5-2.5-2.5l.5-1-1-2L9 10z"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <header>
+      <div class="bar">
+        <a class="brand" href="index.html"
+          ><img src="nicesa_logo.jpeg" alt="NICE-SA logo" />NICE-SA FUTA</a
+        >
+        <nav id="nv">
+          <a href="index.html">Home</a><a href="about.html">About</a
+          ><a href="lead.html">Leadership</a
+          ><a class="on" href="blog.html">Blog/News</a
+          ><a href="gallery.html">Gallery</a
+          ><a href="constitution.html">Constitution</a
+          ><a href="contact.html">Contact</a>
+          <a class="join join-m" href="membership.html">Join NICE-SA</a>
+        </nav>
+        <a class="join join-d" href="membership.html">Join NICE-SA</a>
+        <button class="burger" id="bg" aria-label="Menu" aria-expanded="false">
+          <svg class="i m" viewBox="0 0 24 24">
+            <path d="M3 6h18M3 12h18M3 18h18" /></svg
+          ><svg class="i x" viewBox="0 0 24 24">
+            <path d="M5 5l14 14M19 5L5 19" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="hero">
+      <section class="top">
+        <span class="eyebrow">Latest updates</span>
+        <h1>Blog <em>/</em> News</h1>
+        <p>Official notices and news for members.</p>
+      </section>
+
+      <div class="tools">
+        <div class="chips" id="ch"></div>
+        <div class="sr">
+          <svg class="i" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M20 20l-4-4" /></svg
+          ><input id="q" type="search" placeholder="Search posts..." />
+        </div>
+      </div>
+      <svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none">
+        <path d="M0 56V30C240 2 480 2 720 24s480 28 720 4v28z" />
+      </svg>
+    </div>
+    <section class="list" id="ls"></section>
+    <p class="none" id="no">No posts match your search.</p>
+
+    <footer>
+      <div class="fg">
+        <div class="fb">
+          <h3>NICE-SA FUTA</h3>
+          <p>
+            The student association for civil engineers at the Federal
+            University of Technology, Akure.
+          </p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="lead.html">Leadership</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="blog.html">Blog/News</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="constitution.html">Constitution</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="administrations.html">Administrations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Connect With Us</h3>
+          <div class="ic2">
+            <a href="#" aria-label="Instagram"
+              ><svg class="i"><use href="#ig" /></svg></a
+            ><a href="#" aria-label="Facebook"
+              ><svg class="i"><use href="#fb" /></svg></a
+            ><a href="#" aria-label="X"
+              ><svg class="i"><use href="#tw" /></svg></a
+            ><a href="#" aria-label="LinkedIn"
+              ><svg class="i"><use href="#li" /></svg></a
+            ><a href="#" aria-label="WhatsApp"
+              ><svg class="i"><use href="#wa" /></svg
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="copy">
+        <div>
+          © 2026 NICE-SA FUTA. All Rights Reserved. Federal University of
+          Technology, Akure.
+        </div>
+      </div>
+    </footer>
+    <button class="top-btn" id="tb" aria-label="Back to top">↑</button>
+
+    <script>
+      var P = [
+        [
+          "2026-10-12",
+          "12 Oct 2026",
+          "Membership",
+          "Registration Opens for NICE-SA FUTA 2026/2027 Membership",
+          "Register online or at the department office before the deadline.",
+          "All civil engineering students are invited to register. Bring your matric number and a passport photograph if registering at the department office. Early registration gives you access to all sessions, tutorials and site visits.",
+        ],
+        [
+          "2026-10-08",
+          "8 Oct 2026",
+          "Committees",
+          "Applications Open for Committee Membership",
+          "Choose the committee that fits your skills and interests.",
+          "Committees include Welfare, Academics, Publicity, Technical and Events. Each committee meets weekly and members get leadership experience, certificates and priority for executive roles.",
+        ],
+        [
+          "2026-10-01",
+          "1 Oct 2026",
+          "Notice",
+          "Important Notice to All NICE-SA Members",
+          "Please read the updated schedule of meetings for this session.",
+          "General meetings now hold on the first Thursday of every month. Attendance is recorded and counts towards eligibility for executive offices as stated in the constitution.",
+        ],
+        [
+          "2026-09-20",
+          "20 Sep 2026",
+          "Academic",
+          "Tutorial Timetable for the First Semester",
+          "Weekly peer tutorials start next week.",
+          "Tutorials cover Strength of Materials, Fluid Mechanics, Engineering Mathematics and Surveying. Final-year students will lead each session. Bring your notes and past questions.",
+        ],
+        [
+          "2026-09-05",
+          "5 Sep 2026",
+          "Events",
+          "Call for Site Visit Volunteers",
+          "Members who want to help organise the visit should sign up.",
+          "Volunteers will handle transport, safety briefings and registration. Sign up through the Contact page or see any executive member. Safety wear is compulsory on site.",
+        ],
+      ];
+      var cat = "All",
+        ls = document.getElementById("ls"),
+        ch = document.getElementById("ch"),
+        q = document.getElementById("q"),
+        no = document.getElementById("no");
+      var cats = ["All"].concat(
+        P.map(function (p) {
+          return p[2];
+        }).filter(function (v, i, a) {
+          return a.indexOf(v) == i;
+        }),
+      );
+      cats.forEach(function (c) {
+        var b = document.createElement("button");
+        b.className = "chip" + (c == cat ? " on" : "");
+        b.textContent = c;
+        b.onclick = function () {
+          cat = c;
+          ch.querySelectorAll(".chip").forEach(function (x) {
+            x.classList.toggle("on", x == b);
+          });
+          draw();
+        };
+        ch.appendChild(b);
+      });
+      function esc(s) {
+        return s.replace(/[&<>]/g, function (m) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[m];
+        });
+      }
+      function draw() {
+        var t = q.value.toLowerCase().trim();
+        ls.innerHTML = "";
+        var n = 0;
+        P.forEach(function (p) {
+          if (cat != "All" && p[2] != cat) return;
+          if (t && (p[3] + p[4] + p[5]).toLowerCase().indexOf(t) < 0) return;
+          n++;
+          var a = document.createElement("article");
+          a.className = "post" + (n == 1 ? " feat" : "");
+          a.style.animationDelay = n * 70 + "ms";
+          a.innerHTML =
+            '<div class="meta">' +
+            (n == 1 ? '<span class="new">LATEST</span>' : "") +
+            '<span class="pill">' +
+            p[2] +
+            '</span><time datetime="' +
+            p[0] +
+            '">' +
+            p[1] +
+            "</time></div><h2>" +
+            esc(p[3]) +
+            "</h2><p>" +
+            esc(p[4]) +
+            '</p><div class="more"><p>' +
+            esc(p[5]) +
+            '</p></div><button class="rm">Read more &rarr;</button>';
+          a.querySelector(".rm").onclick = function () {
+            var o = a.classList.toggle("open");
+            this.innerHTML = o ? "Show less &uarr;" : "Read more &rarr;";
+          };
+          ls.appendChild(a);
+        });
+        no.style.display = n ? "none" : "block";
+      }
+      q.oninput = draw;
+      draw();
+      var bg = document.getElementById("bg"),
+        nv = document.getElementById("nv");
+      bg.onclick = function () {
+        var o = nv.classList.toggle("open");
+        bg.setAttribute("aria-expanded", o);
+      };
+      nv.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          nv.classList.remove("open");
+          bg.setAttribute("aria-expanded", false);
+        });
+      });
+      addEventListener("resize", function () {
+        if (innerWidth > 1100) {
+          nv.classList.remove("open");
+          bg.setAttribute("aria-expanded", false);
+        }
+      });
+      var tb = document.getElementById("tb");
+      addEventListener("scroll", function () {
+        tb.classList.toggle("show", scrollY > 400);
+      });
+      tb.onclick = function () {
+        scrollTo({ top: 0, behavior: "smooth" });
+      };
+    </script>
+  </body>
+</html>

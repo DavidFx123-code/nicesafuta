@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light only" />
+    <title>Contact | NICE-SA FUTA</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --g: #0b7a3b;
+        --gd: #06471f;
+        --gl: #e6f4ea;
+        --y: #ffd21a;
+        --bg: #f4f8f5;
+        --card: #fff;
+        --tx: #10231a;
+        --mu: #53655b;
+        --bd: #dbe7de;
+        --hd: #fff;
+        color-scheme: light only;
+        box-sizing: border-box;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "DM Sans", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--tx);
+        line-height: 1.6;
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+      h1,
+      h2,
+      h3,
+      .brand {
+        font-family: "Bricolage Grotesque", "DM Sans", sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      svg.i {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex: none;
+      }
+
+      /* ================= HEADER (matches About page) ================= */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--hd);
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.1);
+      }
+      .bar {
+        max-width: 1120px;
+        margin: auto;
+        height: 61px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        font-size: 19px;
+        color: var(--gd);
+        margin-right: 26px;
+        white-space: nowrap;
+        letter-spacing: -0.2px;
+      }
+      .brand img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      nav {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      nav a {
+        padding: 0 17px;
+        height: 38px;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 14px;
+        font-weight: 500;
+        font-size: 16px;
+        color: var(--tx);
+        transition: 0.2s;
+        white-space: nowrap;
+      }
+      nav a:hover,
+      nav a.on {
+        background: var(--gl);
+        color: var(--g);
+      }
+      nav a.join,
+      .join {
+        background: var(--y);
+        color: #2b2300;
+        font-weight: 700;
+        font-size: 16px;
+        height: 56px;
+        padding: 0 27px;
+        border-radius: 18px;
+        box-shadow: 0 8px 20px rgba(255, 210, 26, 0.45);
+        transition: 0.2s;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+      }
+      nav a.join {
+        margin-left: auto;
+      }
+      nav a.join:hover,
+      .join:hover {
+        transform: translateY(-2px);
+        background: #ffdc45;
+        color: #2b2300;
+      }
+      .burger {
+        display: none;
+        background: none;
+        border: 0;
+        color: var(--gd);
+        cursor: pointer;
+        padding: 6px;
+        margin-left: auto;
+      }
+      .burger svg {
+        width: 32px;
+        height: 32px;
+        stroke-width: 2;
+      }
+      .burger .x {
+        display: none;
+      }
+      .burger[aria-expanded="true"] .x {
+        display: block;
+      }
+      .burger[aria-expanded="true"] .m {
+        display: none;
+      }
+      @media (max-width: 1160px) {
+        .bar {
+          padding: 0 20px;
+        }
+      }
+      @media (max-width: 1020px) {
+        .burger {
+          display: block;
+        }
+        nav {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 100%;
+          background: var(--hd);
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 6px 24px 20px;
+          box-shadow: 0 18px 30px rgba(0, 0, 0, 0.15);
+          display: none;
+        }
+        nav.open {
+          display: flex;
+        }
+        nav a {
+          border-radius: 8px;
+          padding: 0 6px;
+          height: 46px;
+          font-size: 15px;
+        }
+        nav a,
+        nav a:hover,
+        nav a.on {
+          background: none;
+          color: var(--tx);
+          padding: 0;
+        }
+        nav a.join,
+        nav a.join:hover {
+          color: #2b2300;
+          background: var(--y);
+          padding: 0 27px;
+        }
+        nav a.join {
+          margin: 12px 0 0;
+          justify-content: center;
+          height: 52px;
+        }
+      }
+
+      /* ================= HERO (compact, no logo) ================= */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+        background: linear-gradient(135deg, var(--gd), var(--g) 65%, #16a34a);
+      }
+      .hero:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: radial-gradient(
+          ellipse at center,
+          #000 30%,
+          transparent 85%
+        );
+        -webkit-mask-image: radial-gradient(
+          ellipse at center,
+          #000 30%,
+          transparent 85%
+        );
+      }
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(2px);
+      }
+      .b1 {
+        width: 360px;
+        height: 360px;
+        right: -90px;
+        top: -140px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 210, 26, 0.35),
+          transparent 70%
+        );
+        animation: dr 9s ease-in-out infinite;
+      }
+      .b2 {
+        width: 300px;
+        height: 300px;
+        left: -80px;
+        bottom: -150px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.2),
+          transparent 70%
+        );
+        animation: dr 11s ease-in-out infinite reverse;
+      }
+      @keyframes dr {
+        50% {
+          transform: translate(24px, 18px) scale(1.08);
+        }
+      }
+      .hero .in {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: auto;
+        padding: 56px 24px 112px;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(6px);
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.85rem;
+        padding: 7px 16px;
+        border-radius: 999px;
+        margin-bottom: 18px;
+      }
+      .tag:before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--y);
+        box-shadow: 0 0 0 4px rgba(255, 210, 26, 0.3);
+      }
+      .hero h1 {
+        font-size: clamp(2.6rem, 7vw, 4.4rem);
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+      .hero h1 span {
+        color: var(--y);
+      }
+      .hero p {
+        font-size: 1.15rem;
+        opacity: 0.92;
+        margin-top: 14px;
+      }
+      .wave {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        height: 54px;
+        z-index: 1;
+        display: block;
+        width: 100%;
+      }
+      .wave path {
+        fill: var(--bg);
+      }
+
+      /* ================= MAIN ================= */
+      main {
+        max-width: 1120px;
+        margin: -64px auto 0;
+        padding: 0 24px 80px;
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 28px;
+        position: relative;
+        z-index: 2;
+      }
+      @media (max-width: 860px) {
+        main {
+          grid-template-columns: 1fr;
+          margin-top: -48px;
+          padding: 0 20px 56px;
+        }
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--bd);
+        border-radius: 24px;
+        padding: 34px;
+        box-shadow: 0 20px 50px rgba(6, 71, 31, 0.12);
+        position: relative;
+        overflow: hidden;
+        animation: up 0.7s both;
+      }
+      .card:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+      @keyframes up {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+      }
+      .card:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 6px;
+        background: linear-gradient(90deg, var(--g), #22c55e);
+      }
+      .card.f:before {
+        background: linear-gradient(90deg, var(--y), #ffb300);
+      }
+      .card:after {
+        content: "";
+        position: absolute;
+        right: -60px;
+        bottom: -60px;
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: radial-gradient(circle, var(--gl), transparent 70%);
+        pointer-events: none;
+      }
+      h2 {
+        font-size: 1.75rem;
+        margin-bottom: 6px;
+        letter-spacing: -0.4px;
+      }
+      .sub {
+        color: var(--mu);
+        margin-bottom: 22px;
+      }
+      .ct {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        padding: 14px;
+        margin: 0 -14px;
+        border-radius: 16px;
+        transition: 0.25s;
+        position: relative;
+        z-index: 1;
+      }
+      .ct:hover {
+        background: var(--gl);
+        transform: translateX(6px);
+      }
+      .ct .ic {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: linear-gradient(135deg, var(--g), #22c55e);
+        box-shadow: 0 8px 18px rgba(11, 122, 59, 0.3);
+      }
+      .ct .ic svg {
+        width: 22px;
+        height: 22px;
+      }
+      .ct small {
+        display: block;
+        color: var(--mu);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .ct b {
+        font-weight: 600;
+        word-break: break-word;
+      }
+      .soc-t {
+        margin-top: 18px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        position: relative;
+        z-index: 1;
+      }
+      .soc {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+        position: relative;
+        z-index: 1;
+      }
+      .soc a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--bd);
+        background: var(--card);
+        padding: 9px 15px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: 0.2s;
+      }
+      .soc a:hover {
+        background: var(--g);
+        color: #fff;
+        border-color: var(--g);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(11, 122, 59, 0.25);
+      }
+      label {
+        display: block;
+        font-weight: 700;
+        font-size: 0.9rem;
+        margin: 18px 0 7px;
+        position: relative;
+        z-index: 1;
+      }
+      input,
+      textarea {
+        width: 100%;
+        font: inherit;
+        color: var(--tx);
+        background: var(--bg);
+        border: 1.5px solid var(--bd);
+        border-radius: 14px;
+        padding: 14px 16px;
+        transition: 0.2s;
+        position: relative;
+        z-index: 1;
+      }
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+      input:focus,
+      textarea:focus {
+        outline: 0;
+        border-color: var(--g);
+        box-shadow: 0 0 0 4px rgba(11, 122, 59, 0.15);
+        background: var(--card);
+      }
+      .err {
+        color: #d93025;
+        font-size: 0.8rem;
+        min-height: 1.1em;
+        margin-top: 4px;
+        position: relative;
+        z-index: 1;
+      }
+      .inv {
+        border-color: #d93025;
+      }
+      button.join {
+        border: 0;
+        font-family: inherit;
+        cursor: pointer;
+        margin-top: 22px;
+        gap: 10px;
+        position: relative;
+        z-index: 1;
+      }
+      button.join svg {
+        width: 18px;
+        height: 18px;
+        transition: 0.2s;
+      }
+      button.join:hover svg {
+        transform: translateX(4px);
+      }
+      .ok {
+        display: none;
+        margin-top: 18px;
+        background: var(--gl);
+        border-left: 5px solid var(--g);
+        padding: 14px 16px;
+        border-radius: 10px;
+        font-weight: 600;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ================= FOOTER (matches About page) ================= */
+      footer {
+        background: linear-gradient(160deg, var(--gd), var(--g) 70%, #12a150);
+        color: #fff;
+        border-top: 5px solid var(--y);
+      }
+      .fg {
+        max-width: 1120px;
+        margin: auto;
+        padding: 56px 0 44px;
+        display: grid;
+        grid-template-columns: 303px 215px 214px 1fr;
+        gap: 40px;
+      }
+      footer h3 {
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 26px;
+        margin-bottom: 20px;
+      }
+      footer ul {
+        padding: 0;
+      }
+      footer li {
+        list-style: none;
+        margin: 0 0 12px;
+        line-height: 24px;
+        font-size: 15px;
+      }
+      footer li a {
+        opacity: 0.95;
+        transition: 0.2s;
+      }
+      footer li a:hover {
+        opacity: 1;
+        color: var(--y);
+      }
+      .fb p {
+        font-size: 15px;
+        line-height: 25px;
+        margin: 0;
+        max-width: 303px;
+      }
+      .ic2 {
+        display: flex;
+        gap: 13px;
+        flex-wrap: wrap;
+      }
+      .ic2 a {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        display: grid;
+        place-items: center;
+        transition: 0.2s;
+      }
+      .ic2 a svg {
+        width: 17px;
+        height: 17px;
+      }
+      .ic2 a:hover {
+        background: var(--y);
+        color: #2b2300;
+        border-color: var(--y);
+        transform: translateY(-3px);
+      }
+      .copy {
+        max-width: 1120px;
+        margin: auto;
+        padding: 24px 0 28px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      @media (max-width: 1160px) {
+        .fg,
+        .copy {
+          margin-left: 24px;
+          margin-right: 24px;
+        }
+      }
+      @media (max-width: 900px) {
+        .fg {
+          grid-template-columns: 1fr 1fr;
+          padding-top: 44px;
+        }
+      }
+      @media (max-width: 520px) {
+        .fg {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+      }
+
+      /* back to top */
+      #up {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 46px;
+        height: 46px;
+        border: 0;
+        border-radius: 12px;
+        background: var(--y);
+        color: #2b2300;
+        font-size: 22px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.25s;
+        z-index: 60;
+      }
+      #up.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      #up:hover {
+        transform: translateY(-3px);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute">
+      <defs>
+        <symbol id="ig" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r=".6" />
+        </symbol>
+        <symbol id="fb" viewBox="0 0 24 24">
+          <path
+            d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+          />
+        </symbol>
+        <symbol id="tw" viewBox="0 0 24 24">
+          <path d="M4 4l16 16M20 4L4 20" />
+        </symbol>
+        <symbol id="li" viewBox="0 0 24 24">
+          <path
+            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"
+          />
+        </symbol>
+        <symbol id="wa" viewBox="0 0 24 24">
+          <path d="M3 21l1.7-5A9 9 0 1 1 8 19.3L3 21z" />
+          <path
+            d="M9 10c0 3 3 6 6 6l1-1.5-2-1-1 .5c-1-.5-2-1.5-2.5-2.5l.5-1-1-2L9 10z"
+          />
+        </symbol>
+        <symbol id="ml" viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="M3 7l9 6 9-6" />
+        </symbol>
+        <symbol id="ph" viewBox="0 0 24 24">
+          <path
+            d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"
+          />
+        </symbol>
+        <symbol id="pn" viewBox="0 0 24 24">
+          <path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z" />
+          <circle cx="12" cy="10" r="2.5" />
+        </symbol>
+        <symbol id="sd" viewBox="0 0 24 24">
+          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <header>
+      <div class="bar">
+        <a class="brand" href="index.html"
+          ><img src="nicesa_logo.jpeg" alt="NICE-SA logo" />NICE-SA FUTA</a
+        >
+        <button class="burger" id="bg" aria-label="Menu" aria-expanded="false">
+          <svg class="i m" viewBox="0 0 24 24">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+          <svg class="i x" viewBox="0 0 24 24">
+            <path d="M5 5l14 14M19 5L5 19" />
+          </svg>
+        </button>
+        <nav id="nv">
+          <a href="index.html">Home</a><a href="about.html">About</a
+          ><a href="leadership.html">Leadership</a
+          ><a href="blog.html">Blog/News</a><a href="gallery.html">Gallery</a
+          ><a href="constitution.html">Constitution</a
+          ><a class="on" href="contact.html">Contact</a
+          ><a class="join" href="membership.html">Join NICE-SA</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="in">
+        <span class="tag">We'd love to hear from you</span>
+        <h1>Contact <span>Us</span></h1>
+        <p>Reach the executive team.</p>
+      </div>
+      <svg class="wave" viewBox="0 0 1440 54" preserveAspectRatio="none">
+        <path d="M0 54V28C240 0 480 0 720 22s480 28 720 4v28z" />
+      </svg>
+    </section>
+
+    <main>
+      <div class="card">
+        <h2>Get in touch</h2>
+        <p class="sub">
+          Questions, partnerships or membership enquiries? Talk to us.
+        </p>
+        <div class="ct">
+          <span class="ic"
+            ><svg class="i"><use href="#ml" /></svg
+          ></span>
+          <div><small>Email</small><b>nicesa.futa@example.com</b></div>
+        </div>
+        <div class="ct">
+          <span class="ic"
+            ><svg class="i"><use href="#ph" /></svg
+          ></span>
+          <div><small>Phone</small><b>+234 000 000 0000</b></div>
+        </div>
+        <div class="ct">
+          <span class="ic"
+            ><svg class="i"><use href="#pn" /></svg
+          ></span>
+          <div>
+            <small>Office</small
+            ><b>Department of Civil Engineering, FUTA, Akure</b>
+          </div>
+        </div>
+        <div class="soc-t">Follow us</div>
+        <div class="soc">
+          <a href="#"
+            ><svg class="i"><use href="#ig" /></svg>Instagram</a
+          ><a href="#"
+            ><svg class="i"><use href="#fb" /></svg>Facebook</a
+          ><a href="#"
+            ><svg class="i"><use href="#tw" /></svg>X</a
+          ><a href="#"
+            ><svg class="i"><use href="#li" /></svg>LinkedIn</a
+          ><a href="#"
+            ><svg class="i"><use href="#wa" /></svg>WhatsApp</a
+          >
+        </div>
+      </div>
+
+      <form class="card f" id="fm" novalidate>
+        <h2>Send a message</h2>
+        <p class="sub">We usually reply within a few days.</p>
+        <label for="n">Name</label
+        ><input id="n" placeholder="Your full name" autocomplete="name" />
+        <div class="err"></div>
+        <label for="e">Email</label
+        ><input
+          id="e"
+          type="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+        />
+        <div class="err"></div>
+        <label for="m">Message</label
+        ><textarea id="m" placeholder="How can we help?"></textarea>
+        <div class="err"></div>
+        <button class="join" type="submit">
+          Send message <svg class="i"><use href="#sd" /></svg>
+        </button>
+        <div class="ok" id="ok">
+          Thank you! Your email app has opened with your message ready to send.
+        </div>
+      </form>
+    </main>
+
+    <footer>
+      <div class="fg">
+        <div class="fb">
+          <h3>NICE-SA FUTA</h3>
+          <p>
+            The student association for civil engineers at the Federal
+            University of Technology, Akure.
+          </p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="blog.html">Blog/News</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="constitution.html">Constitution</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="administrations.html">Administrations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Connect With Us</h3>
+          <div class="ic2">
+            <a href="#" aria-label="Instagram"
+              ><svg class="i"><use href="#ig" /></svg></a
+            ><a href="#" aria-label="Facebook"
+              ><svg class="i"><use href="#fb" /></svg></a
+            ><a href="#" aria-label="X"
+              ><svg class="i"><use href="#tw" /></svg></a
+            ><a href="#" aria-label="LinkedIn"
+              ><svg class="i"><use href="#li" /></svg></a
+            ><a href="#" aria-label="WhatsApp"
+              ><svg class="i"><use href="#wa" /></svg
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="copy">
+        © 2026 NICE-SA FUTA. All Rights Reserved. Federal University of
+        Technology, Akure.
+      </div>
+    </footer>
+
+    <button id="up" aria-label="Back to top">↑</button>
+
+    <script>
+      var bg = document.getElementById("bg"),
+        nv = document.getElementById("nv");
+      bg.onclick = function () {
+        var o = nv.classList.toggle("open");
+        bg.setAttribute("aria-expanded", o);
+      };
+      nv.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          nv.classList.remove("open");
+          bg.setAttribute("aria-expanded", false);
+        });
+      });
+      addEventListener("resize", function () {
+        if (innerWidth > 1020) {
+          nv.classList.remove("open");
+          bg.setAttribute("aria-expanded", false);
+        }
+      });
+      var up = document.getElementById("up");
+      addEventListener("scroll", function () {
+        up.classList.toggle("show", scrollY > 300);
+      });
+      up.onclick = function () {
+        scrollTo({ top: 0, behavior: "smooth" });
+      };
+
+      var f = document.getElementById("fm");
+      f.onsubmit = function (ev) {
+        ev.preventDefault();
+        var n = f.n,
+          e = f.e,
+          m = f.m,
+          bad = false;
+        function chk(el, c, t) {
+          var r = el.nextElementSibling;
+          if (c) {
+            el.classList.remove("inv");
+            r.textContent = "";
+          } else {
+            el.classList.add("inv");
+            r.textContent = t;
+            bad = true;
+          }
+        }
+        chk(n, n.value.trim().length > 1, "Please enter your name.");
+        chk(
+          e,
+          /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.value),
+          "Please enter a valid email.",
+        );
+        chk(m, m.value.trim().length > 4, "Please write a message.");
+        if (bad) return;
+        var body =
+          "Name: " + n.value + "\nEmail: " + e.value + "\n\n" + m.value;
+        location.href =
+          "mailto:nicesa.futa@example.com?subject=" +
+          encodeURIComponent("Message from " + n.value) +
+          "&body=" +
+          encodeURIComponent(body);
+        document.getElementById("ok").style.display = "block";
+        f.reset();
+      };
+    </script>
+  </body>
+</html>

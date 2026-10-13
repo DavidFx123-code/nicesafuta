@@ -1,0 +1,1280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#00843D" />
+    <title>Leadership | NICE-SA FUTA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --g1: #00843d;
+        --g2: #12a455;
+        --gdeep: #00843d;
+        --on: #fff;
+        color-scheme: light;
+        --y1: #fcd116;
+        --y2: #ffe56b;
+        --card: #ffffff;
+        --ink: #14231a;
+        --mute: #51655a;
+        --line: #dbe6dc;
+        --grad: linear-gradient(135deg, #006b31, #00843d 50%, #12a455);
+        --gold: linear-gradient(135deg, var(--y1), var(--y2));
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: #fff;
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+        line-height: 1.6;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      :focus-visible {
+        outline: 3px solid var(--y1);
+        outline-offset: 2px;
+      }
+
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 2px 14px rgba(0, 50, 25, 0.1);
+        font-family: "Outfit", "Segoe UI", system-ui, sans-serif;
+      }
+      nav .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 66px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #064d25;
+        font-weight: 800;
+        font-size: 1.05rem;
+        line-height: 1.1;
+      }
+      .emblem {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: #fff;
+        border: 2px solid #fff;
+        flex: none;
+      }
+      .menu {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex: 1;
+      }
+      .links {
+        display: flex;
+        gap: 2px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+      }
+      .links a {
+        color: #0b3d20;
+        font-size: 0.92rem;
+        font-weight: 600;
+        padding: 7px 14px;
+        border-radius: 99px;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .links a:hover {
+        background: #e7f5ec;
+        color: #00843d;
+      }
+      .joinbtn {
+        background: #fcd116;
+        color: #14231a;
+        font-weight: 700;
+        font-size: 0.92rem;
+        padding: 12px 24px;
+        border-radius: 14px;
+        box-shadow: 0 8px 18px rgba(252, 209, 22, 0.45);
+        transition: transform 0.2s;
+      }
+      .joinbtn:hover {
+        transform: translateY(-2px);
+      }
+      footer .brand {
+        color: #fff;
+      }
+      .burger {
+        display: none;
+        width: 44px;
+        height: 44px;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        position: relative;
+        padding: 0;
+      }
+      .burger span {
+        position: absolute;
+        left: 9px;
+        width: 26px;
+        height: 2px;
+        background: #064d25;
+        border-radius: 2px;
+        transition:
+          transform 0.25s,
+          opacity 0.2s,
+          top 0.25s;
+      }
+      .burger span:nth-child(1) {
+        top: 14px;
+      }
+      .burger span:nth-child(2) {
+        top: 21px;
+      }
+      .burger span:nth-child(3) {
+        top: 28px;
+      }
+      nav.open .burger span:nth-child(1) {
+        top: 21px;
+        transform: rotate(45deg);
+      }
+      nav.open .burger span:nth-child(2) {
+        opacity: 0;
+      }
+      nav.open .burger span:nth-child(3) {
+        top: 21px;
+        transform: rotate(-45deg);
+      }
+      @keyframes drop {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+      }
+      @media (max-width: 1080px) {
+        .burger {
+          display: block;
+        }
+        .menu {
+          display: none;
+          flex-basis: 100%;
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 6px 0 18px;
+          animation: drop 0.25s ease;
+        }
+        nav.open .menu {
+          display: flex;
+        }
+        .links {
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: 0;
+          flex: none;
+        }
+        .links a {
+          padding: 11px 4px;
+          border-radius: 0;
+          font-size: 0.95rem;
+        }
+        .links a:hover {
+          background: none;
+        }
+        .links a.on {
+          color: #00843d;
+          font-weight: 700;
+        }
+        .joinbtn {
+          margin-top: 14px;
+          text-align: center;
+          padding: 15px;
+          border-radius: 16px;
+        }
+      }
+
+      /* HERO */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        color: var(--on);
+        padding: 64px 0 80px;
+        margin-bottom: 56px;
+        border-radius: 0 0 14px 14px;
+        font-family: "Outfit", "Segoe UI", system-ui, sans-serif;
+        background:
+          radial-gradient(rgba(255, 255, 255, 0.14) 1.3px, transparent 1.4px) 0
+            0/26px 26px,
+          #00843d;
+      }
+      @keyframes float {
+        50% {
+          transform: translateY(22px) scale(1.05);
+        }
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes pulse {
+        70% {
+          box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        }
+      }
+      @keyframes ping {
+        from {
+          transform: scale(0.95);
+          opacity: 0.9;
+        }
+        to {
+          transform: scale(1.3);
+          opacity: 0;
+        }
+      }
+      @keyframes rise {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .o1 {
+        width: 360px;
+        height: 360px;
+        right: -90px;
+        top: -130px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.3),
+          transparent 70%
+        );
+        animation: float 9s ease-in-out infinite;
+      }
+      .o2 {
+        width: 300px;
+        height: 300px;
+        left: -100px;
+        bottom: -140px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.35),
+          transparent 70%
+        );
+        animation: float 11s ease-in-out infinite reverse;
+      }
+      .gear {
+        position: absolute;
+        left: -130px;
+        top: 50%;
+        margin-top: -310px;
+        width: 620px;
+        height: 620px;
+        border-radius: 50%;
+        border: 46px dashed rgba(255, 255, 255, 0.14);
+        animation: spin 40s linear infinite;
+        pointer-events: none;
+      }
+      .gear.g2 {
+        left: 40px;
+        margin-top: -190px;
+        width: 380px;
+        height: 380px;
+        border: 26px dotted rgba(255, 255, 255, 0.2);
+        animation: spin 28s linear infinite reverse;
+      }
+      .herorow {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 26px;
+      }
+      .herotext {
+        flex: none;
+      }
+      .herotext > * {
+        opacity: 0;
+        transform: translateY(22px);
+        animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+      }
+      .herotext > :nth-child(2) {
+        animation-delay: 0.12s;
+      }
+      .herotext > :nth-child(3) {
+        animation-delay: 0.24s;
+      }
+      .herotext > :nth-child(4) {
+        animation-delay: 0.36s;
+      }
+      .herotext > :nth-child(5) {
+        animation-delay: 0.48s;
+      }
+      .herotext > :nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        font-size: 0.82rem;
+        font-weight: 600;
+        backdrop-filter: blur(6px);
+      }
+      .pill i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #fff;
+        animation: pulse 2s infinite;
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 5.4vw, 4rem);
+        line-height: 1.05;
+        margin: 18px 0 0;
+        letter-spacing: -0.025em;
+        font-weight: 800;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: #fff;
+      }
+      .hero p {
+        max-width: 500px;
+        margin: 0;
+        font-size: 1.08rem;
+        color: rgba(255, 255, 255, 0.95);
+      }
+      .cta {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      .btn {
+        padding: 12px 26px;
+        border-radius: 99px;
+        font-weight: 700;
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      .btn:hover {
+        transform: translateY(-3px);
+      }
+      .btn.gold {
+        background: #fff;
+        color: #00843d;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+      }
+      .btn.ghost {
+        border: 2px solid rgba(255, 255, 255, 0.75);
+      }
+      .btn.ghost:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .stats {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 34px;
+      }
+      .stat {
+        min-width: 120px;
+        padding: 12px 18px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.32);
+        backdrop-filter: blur(6px);
+      }
+      .stat b {
+        display: block;
+        font-size: 2rem;
+        line-height: 1.1;
+        color: #fff;
+      }
+      .stat span {
+        font-size: 0.8rem;
+        opacity: 0.95;
+      }
+      .logobox {
+        width: 200px;
+        height: 200px;
+        margin: 16px 0 8px 8px;
+      }
+      .lg {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+      }
+      @keyframes bob {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-20px);
+        }
+      }
+      .logobox:hover .lg {
+        animation: bob 0.8s ease-in-out infinite alternate;
+      }
+      .herologo {
+        width: 154px;
+        height: 154px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: #fff;
+        border: 6px solid #fff;
+        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+        position: relative;
+        z-index: 1;
+      }
+      .ring {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 2px dashed rgba(255, 255, 255, 0.8);
+        animation: spin 18s linear infinite;
+      }
+      .ring.r2 {
+        inset: 12px;
+        border: 3px solid rgba(255, 255, 255, 0.8);
+        animation: ping 3s ease-out infinite;
+      }
+      .bar {
+        display: block;
+        width: 64px;
+        height: 5px;
+        border-radius: 3px;
+        background: var(--gold);
+        margin: 14px 0 0;
+      }
+
+      section {
+        padding: 68px 0;
+        background:
+          radial-gradient(rgba(255, 255, 255, 0.13) 1.3px, transparent 1.4px) 0
+            0/26px 26px,
+          var(--grad);
+      }
+      section + section {
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .eyebrow {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        color: var(--y2);
+        font-weight: 700;
+        font-size: 0.76rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 99px;
+        margin-bottom: 12px;
+      }
+      h2 {
+        color: var(--on);
+        font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+        margin: 0 0 6px;
+        letter-spacing: -0.015em;
+      }
+      .sub {
+        color: rgba(255, 255, 255, 0.92);
+        margin: 18px 0 32px;
+        max-width: 560px;
+      }
+
+      /* CARDS */
+      .grid {
+        display: grid;
+        gap: 22px;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      @media (max-width: 1000px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-top: 4px solid var(--g1);
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: 0 12px 30px rgba(0, 40, 18, 0.18);
+        display: flex;
+        flex-direction: column;
+      }
+      .card:nth-child(4n + 2) {
+        border-top-color: var(--y1);
+      }
+      .card:nth-child(4n + 3) {
+        border-top-color: var(--g2);
+      }
+      .card:nth-child(4) {
+        border-top-color: var(--y1);
+      }
+      .photo {
+        aspect-ratio: 1/1.1;
+        border-radius: 10px;
+        background: #fff;
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        color: #5f7567;
+        font-size: 0.78rem;
+        font-weight: 600;
+        margin-bottom: 14px;
+        position: relative;
+        overflow: hidden;
+      }
+      .photo svg {
+        width: 46%;
+        fill: #b7cbbb;
+      }
+      .photo span {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+      }
+
+      @property --ang {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+      }
+      @keyframes roll {
+        from {
+          --ang: 0deg;
+        }
+        to {
+          --ang: 360deg;
+        }
+      }
+      .card,
+      .feature,
+      .rep {
+        position: relative;
+        transition:
+          box-shadow 0.4s,
+          transform 0.3s;
+      }
+      .card:before,
+      .feature:before,
+      .rep:before {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: 18px;
+        padding: 4px;
+        background: conic-gradient(
+          from var(--ang),
+          #00843d,
+          #fcd116,
+          #6fd196,
+          #ffe56b,
+          #00843d
+        );
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+      }
+      .feature:before,
+      .rep:before {
+        border-radius: 22px;
+      }
+      .card:hover,
+      .feature:hover,
+      .rep:hover {
+        box-shadow:
+          0 0 24px rgba(0, 132, 61, 0.3),
+          0 0 34px rgba(242, 194, 0, 0.22);
+      }
+      .card:hover:before,
+      .feature:hover:before,
+      .rep:hover:before {
+        opacity: 1;
+        animation: roll 1.3s ease-out 1 forwards;
+      }
+
+      .card h3 {
+        margin: 0;
+        font-size: 1.08rem;
+      }
+      .pos {
+        display: inline-block;
+        align-self: flex-start;
+        background: var(--gold);
+        color: #064d25;
+        padding: 3px 12px;
+        border-radius: 99px;
+        margin: 4px 0 6px;
+        font-size: 0.84rem;
+      }
+      .role {
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: #00843d;
+      }
+      .meta {
+        font-size: 0.84rem;
+        color: var(--mute);
+      }
+      .card p {
+        font-size: 0.84rem;
+        color: var(--mute);
+        margin: 8px 0 0;
+      }
+      .soc {
+        display: flex;
+        gap: 8px;
+        margin-top: auto;
+        padding-top: 14px;
+      }
+      .ic {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: rgba(0, 132, 61, 0.06);
+        border: 1px solid rgba(0, 132, 61, 0.4);
+        color: #00843d;
+        transition:
+          background 0.2s,
+          color 0.2s,
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .ic:hover {
+        background: var(--gold);
+        border-color: var(--y1);
+        color: #064d25;
+        transform: translateY(-2px);
+      }
+      .ic svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .feature {
+        display: grid;
+        grid-template-columns: minmax(220px, 300px) 1fr;
+        gap: 36px;
+        align-items: center;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-left: 6px solid var(--y1);
+        border-radius: 18px;
+        padding: 28px;
+      }
+      .feature .photo {
+        margin: 0;
+      }
+      .feature h3 {
+        font-size: 1.7rem;
+        margin: 4px 0 4px;
+        letter-spacing: -0.01em;
+      }
+      .tag {
+        display: inline-block;
+        background: var(--gold);
+        color: #064d25;
+        font-weight: 700;
+        font-size: 0.82rem;
+        padding: 4px 12px;
+        border-radius: 99px;
+      }
+      .feature .row {
+        margin-top: 18px;
+        color: var(--mute);
+      }
+      .feature .row b {
+        color: var(--ink);
+        display: block;
+        margin-bottom: 8px;
+      }
+      .feature .soc {
+        padding-top: 0;
+        margin-top: 0;
+      }
+      .feature .ic {
+        width: 44px;
+        height: 44px;
+      }
+      .feature .ic svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .roles {
+        max-width: 800px;
+      }
+      details {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        margin-bottom: 10px;
+        overflow: hidden;
+      }
+      details[open] {
+        border-color: var(--g1);
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 700;
+        padding: 15px 20px;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary:after {
+        content: "+";
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--grad);
+        color: var(--on);
+        display: grid;
+        place-items: center;
+        font-weight: 400;
+      }
+      details[open] summary:after {
+        content: "\2212";
+        background: var(--gold);
+        color: #064d25;
+      }
+      details p {
+        margin: 0;
+        padding: 0 20px 18px;
+        color: var(--mute);
+      }
+
+      footer {
+        background: var(--grad);
+        color: var(--on);
+        border-top: 5px solid var(--y1);
+        padding: 52px 0 24px;
+      }
+      .fg {
+        display: grid;
+        gap: 32px;
+        grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      }
+      footer h4 {
+        color: var(--on);
+        margin: 0 0 12px;
+      }
+      footer li {
+        list-style: none;
+        margin-bottom: 6px;
+        font-size: 0.92rem;
+      }
+      footer ul {
+        padding: 0;
+        margin: 0;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+      footer .soc {
+        padding: 0;
+        flex-wrap: wrap;
+      }
+      footer .ic {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        color: #fff;
+      }
+      footer .ic:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: #fff;
+        color: #fff;
+      }
+      .copy {
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        margin-top: 34px;
+        padding-top: 18px;
+        font-size: 0.82rem;
+      }
+      @media (max-width: 860px) {
+        .fg {
+          grid-template-columns: 1fr 1fr;
+        }
+        .feature {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 520px) {
+        .fg {
+          grid-template-columns: 1fr;
+        }
+      }
+      .rv {
+        opacity: 0;
+        transform: translateY(26px);
+      }
+      .rv.in {
+        animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+        .herotext > *,
+        .rv {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav">
+      <div class="wrap">
+        <a class="brand" href="#"
+          ><img
+            class="emblem"
+            src="nicesa_logo.jpeg"
+            alt="NICE-SA FUTA logo"
+          /><span>NICE-SA FUTA</span></a
+        >
+        <button
+          class="burger"
+          id="burger"
+          aria-label="Menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <div class="menu">
+          <div class="links">
+            <a href="index.html">Home</a><a href="about.html">About</a
+            ><a class="on" href="lead.html">Leadership</a
+            ><a href="gallery.html">Gallery</a><a href="blog.html">Blog/News</a
+            ><a href="constitution.html">Constitution</a
+            ><a href="contact.html">Contact</a>
+          </div>
+          <a class="joinbtn" href="#">Join NICE-SA</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <span class="orb o1"></span><span class="orb o2"></span
+      ><span class="gear"></span><span class="gear g2"></span>
+      <div class="wrap herorow">
+        <div class="herotext">
+          <span class="pill"><i></i> Student Leadership</span>
+          <h1>Meet the NICE-SA FUTA <em>Leadership</em></h1>
+          <div class="logobox">
+            <div class="lg">
+              <span class="ring"></span><span class="ring r2"></span
+              ><img
+                class="herologo"
+                src="nicesa_logo.jpeg"
+                alt="NICE-SA FUTA logo"
+              />
+            </div>
+          </div>
+          <p>
+            Meet the students and leaders working together to move NICE-SA FUTA
+            forward.
+          </p>
+          <div class="cta">
+            <a class="btn gold" href="#team">Meet the team</a
+            ><a class="btn ghost" href="#">Join NICE-SA</a>
+          </div>
+          <div class="stats">
+            <div class="stat"><b data-n="10">0</b><span>Executives</span></div>
+            <div class="stat"><b data-n="5">0</b><span>Class Reps</span></div>
+            <div class="stat">
+              <b data-n="1">0</b><span>SRC Honourable</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="team">
+      <div class="wrap">
+        <span class="eyebrow">Leadership</span><br />
+        <h2>Executive team</h2>
+        <span class="bar"></span>
+        <div class="grid" id="exec" style="margin-top: 34px"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <span class="eyebrow">Student voice</span><br />
+        <h2>SRC Honourable</h2>
+        <span class="bar"></span>
+        <p class="sub">
+          Our voice in the FUTA Students' Representative Council.
+        </p>
+        <div class="feature">
+          <div class="photo">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4.5" />
+              <path d="M3 22c0-5 4-8 9-8s9 3 9 8z" /></svg
+            ><span>Photo</span>
+          </div>
+          <div>
+            <span class="tag">Honourable</span>
+            <h3>Akinbobola IyinOluwa Emmanuel</h3>
+            <div class="role">Civil and Environmental Engineering, FUTASRC</div>
+            <div class="row">
+              <b>Contact details</b>
+              <div class="soc" id="honsoc"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <span class="eyebrow">Every level</span><br />
+        <h2>Class representatives</h2>
+        <span class="bar"></span>
+        <div class="grid" id="reps" style="margin-top: 34px"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="roles">
+          <span class="eyebrow">Responsibilities</span><br />
+          <h2>What each role does</h2>
+          <span class="bar"></span>
+          <div id="roles" style="margin-top: 30px"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div class="fg">
+          <div>
+            <a class="brand" href="#"
+              ><img
+                class="emblem"
+                src="nicesa_logo.jpeg"
+                alt="NICE-SA FUTA logo"
+              /><span>NICE-SA FUTA</span></a
+            >
+            <p style="font-size: 0.92rem">
+              The student association for civil engineers at the Federal
+              University of Technology, Akure.
+            </p>
+          </div>
+          <div>
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="lead.html">Leadership</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Announcements</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="constitution.html">Constitution</a></li>
+              <li><a href="#">Membership</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="#">Administrations</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Connect With Us</h4>
+            <div class="soc" id="fsoc"></div>
+          </div>
+        </div>
+        <div class="copy">
+          &copy; 2026 NICE-SA FUTA. All Rights Reserved.<br />Federal University
+          of Technology, Akure.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      var I = {
+        x: '<svg viewBox="0 0 24 24"><path d="M4 4l7.2 9.6L4.5 20h1.8l5.6-5.9L16 20h4l-7.5-10L19.2 4h-1.8l-5 5.3L8.5 4z"/></svg>',
+        li: '<svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>',
+        ig: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg>',
+        fb: '<svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
+        wa: '<svg viewBox="0 0 24 24"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>',
+      };
+      function soc(list) {
+        return list
+          .map(function (k) {
+            var n = {
+              x: "X",
+              li: "LinkedIn",
+              ig: "Instagram",
+              fb: "Facebook",
+              wa: "WhatsApp",
+            }[k];
+            return (
+              '<a class="ic" href="#" aria-label="' +
+              n +
+              '" title="' +
+              n +
+              '">' +
+              I[k] +
+              "</a>"
+            );
+          })
+          .join("");
+      }
+      var person =
+        '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8z"/></svg>';
+      var ex = [
+        [
+          "Engr. John Doe",
+          "President",
+          "Provides overall leadership and represents NICE-SA FUTA within and outside the university.",
+        ],
+        [
+          "Full Name",
+          "Vice President",
+          "Supports the President, steps in when needed and oversees the work of committees.",
+        ],
+        [
+          "Full Name",
+          "General Secretary",
+          "Keeps official records and minutes, and handles the association\u2019s correspondence.",
+        ],
+        [
+          "Full Name",
+          "Assistant General Secretary",
+          "Assists the General Secretary with records, notices and documentation.",
+        ],
+        [
+          "Full Name",
+          "Financial Secretary",
+          "Records dues and payments, and keeps the association\u2019s financial records accurate.",
+        ],
+        [
+          "Full Name",
+          "Treasurer",
+          "Holds and safeguards association funds, and reports on spending.",
+        ],
+        [
+          "Full Name",
+          "PRO / Publicity Secretary",
+          "Shares announcements and promotes the association\u2019s image and events.",
+        ],
+        [
+          "Full Name",
+          "Welfare Officer",
+          "Looks after members\u2019 wellbeing and responds to their needs.",
+        ],
+        [
+          "Full Name",
+          "Social Director",
+          "Plans social events, games and networking opportunities.",
+        ],
+        [
+          "Full Name",
+          "Technical Secretary",
+          "Coordinates workshops, site visits and technical programmes.",
+        ],
+      ];
+      function card(n, r, d, lvl) {
+        return (
+          '<article class="card"><div class="photo">' +
+          person +
+          "<span>Photo</span></div><h3>" +
+          n +
+          '</h3><div class="role pos">' +
+          r +
+          '</div><div class="meta">' +
+          lvl +
+          ", Civil Engineering</div><p>" +
+          d +
+          '</p><div class="soc">' +
+          soc(["x", "li", "fb", "wa"]) +
+          "</div></article>"
+        );
+      }
+      document.getElementById("exec").innerHTML = ex
+        .map(function (e) {
+          return card(
+            e[0],
+            e[1],
+            "Passionate about leadership, professional development and engineering innovation.",
+            "500 Level",
+          );
+        })
+        .join("");
+      document.getElementById("reps").innerHTML = [100, 200, 300, 400, 500]
+        .map(function (l) {
+          return (
+            '<article class="card"><div class="photo">' +
+            person +
+            '<span>Photo</span></div><h3>Name Surname</h3><div class="role">' +
+            l +
+            ' Level Class Representative</div><div class="meta">Civil Engineering</div><p>rep' +
+            l +
+            '@example.com</p><div class="soc">' +
+            soc(["x", "li", "fb", "wa"]) +
+            "</div></article>"
+          );
+        })
+        .join("");
+      var roles = ex.map(function (e) {
+        return [e[1], e[2]];
+      });
+      roles.push([
+        "SRC Honourable",
+        "Represents NICE-SA FUTA members in the FUTA Students\u2019 Representative Council and brings their concerns to student government.",
+      ]);
+      document.getElementById("roles").innerHTML = roles
+        .map(function (r, i) {
+          return (
+            "<details" +
+            (i == 0 ? " open" : "") +
+            "><summary>" +
+            r[0] +
+            "</summary><p>" +
+            r[1] +
+            "</p></details>"
+          );
+        })
+        .join("");
+      document.getElementById("honsoc").innerHTML = soc([
+        "x",
+        "li",
+        "fb",
+        "wa",
+      ]);
+      document.getElementById("fsoc").innerHTML = soc([
+        "ig",
+        "fb",
+        "x",
+        "li",
+        "wa",
+      ]);
+      var rv = document.querySelectorAll(
+        ".card,.feature,details,.eyebrow,section h2",
+      );
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(
+          function (es) {
+            es.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.style.animationDelay = e.target.dataset.d + "ms";
+                e.target.classList.add("in");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+        rv.forEach(function (el, i) {
+          el.classList.add("rv");
+          el.dataset.d = (i % 4) * 90;
+          io.observe(el);
+        });
+      }
+      var nav = document.getElementById("nav"),
+        bt = document.getElementById("burger");
+      bt.addEventListener("click", function () {
+        var o = nav.classList.toggle("open");
+        bt.setAttribute("aria-expanded", o);
+      });
+      nav.querySelectorAll(".links a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          nav.classList.remove("open");
+          bt.setAttribute("aria-expanded", false);
+        });
+      });
+      document.querySelectorAll("[data-n]").forEach(function (el) {
+        var n = +el.dataset.n,
+          t = 0,
+          i = setInterval(function () {
+            t++;
+            el.textContent = Math.round((n * t) / 30);
+            if (t >= 30) clearInterval(i);
+          }, 18);
+      });
+    </script>
+  </body>
+</html>

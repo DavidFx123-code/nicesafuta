@@ -1,0 +1,1939 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>NICE-SA FUTA</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --green: #00843d;
+        --green-d: #006b31;
+        --green-dd: #00441f;
+        --green-t: #eaf6ef;
+        --yellow: #fcd116;
+        --ink: #0b1f15;
+        --muted: #4f6458;
+        --line: #ddebe3;
+        --radius: 18px;
+        --shadow:
+          0 1px 2px rgba(0, 40, 20, 0.06),
+          0 18px 40px -20px rgba(0, 60, 30, 0.3);
+        --grad-deep: linear-gradient(
+          135deg,
+          #00441f 0%,
+          #006b31 55%,
+          #00843d 100%
+        );
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        color: var(--ink);
+        background: #fff;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .btn,
+      .brand,
+      .stat b {
+        font-family: "Sora", "Inter", system-ui, sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        text-wrap: balance;
+      }
+      p {
+        text-wrap: pretty;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      ::selection {
+        background: var(--yellow);
+        color: var(--green-dd);
+      }
+      :focus-visible {
+        outline: 3px solid var(--green);
+        outline-offset: 3px;
+        border-radius: 8px;
+      }
+      .container {
+        width: min(1180px, 92%);
+        margin-inline: auto;
+      }
+      /* HEADER */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--line);
+        padding-top: env(safe-area-inset-top, 0px);
+        transition: box-shadow 0.3s;
+      }
+      header.scrolled {
+        box-shadow: 0 10px 30px -14px rgba(0, 50, 25, 0.35);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        transition: height 0.3s;
+      }
+      header.scrolled .nav {
+        height: 62px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--green-dd);
+        font-weight: 800;
+      }
+      .brand img {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: #fff;
+        object-fit: contain;
+        box-shadow: 0 0 0 2px var(--yellow);
+      }
+      .nav ul {
+        display: flex;
+        gap: 4px;
+        list-style: none;
+      }
+      .nav ul a {
+        color: #29443a;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 8px 14px;
+        border-radius: 999px;
+        transition: 0.2s;
+      }
+
+      /* BLOG/NEWS - REMOVE PADDING AND GREEN BACKGROUND */
+      #menu li:nth-child(4) a {
+        padding: 0 !important;
+        background: transparent !important;
+        color: #29443a !important;
+      }
+
+      .nav ul a:hover,
+      .nav ul a.active {
+        background: var(--green-t);
+        color: var(--green);
+      }
+      .menu-btn {
+        display: none;
+        background: none;
+        border: 0;
+        color: var(--green-dd);
+        font-size: 28px;
+        cursor: pointer;
+      }
+      .mob-only {
+        display: none;
+      }
+      /* BUTTONS */
+      .btn {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 13px 26px;
+        border-radius: 14px;
+        transition: 0.25s;
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+      .btn:active {
+        transform: scale(0.97);
+      }
+      .btn-accent {
+        background: var(--yellow);
+        color: var(--green-dd);
+        box-shadow: 0 10px 22px -10px rgba(252, 209, 22, 0.9);
+      }
+      .btn-accent:hover {
+        transform: translateY(-2px);
+        background: #ffdc3a;
+        box-shadow: 0 14px 28px -10px rgba(252, 209, 22, 0.95);
+      }
+      .btn-ghost {
+        border-color: rgba(255, 255, 255, 0.55);
+        color: #fff;
+      }
+      .btn-ghost:hover {
+        background: #fff;
+        color: var(--green);
+      }
+      .btn-outline {
+        border-color: var(--green);
+        color: var(--green);
+      }
+      .btn-outline:hover {
+        background: var(--green);
+        color: #fff;
+      }
+      /* HERO */
+      .hero {
+        position: relative;
+        height: 100vh;
+        min-height: 640px;
+        overflow: hidden;
+        background: transparent;
+      }
+      .slides {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: transparent;
+      }
+      .slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        z-index: 0;
+      }
+      .slide.prev {
+        opacity: 1;
+        z-index: 1;
+      }
+      .slide.active {
+        opacity: 1;
+        z-index: 2;
+        animation: none;
+      }
+      /* @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      } */
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .slide.active img,
+      .slide.prev img {
+        animation: flow 10s ease-out forwards;
+      }
+      @keyframes flow {
+        from {
+          transform: scale(1.25) translate(3%, 2%);
+        }
+        to {
+          transform: scale(1.05) translate(0, 0);
+        }
+      }
+      /* DARK OVERLAY OVER THE SLIDING PICTURES */
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        pointer-events: none;
+        background:
+          linear-gradient(
+            100deg,
+            rgba(0, 15, 8, 0.82) 0%,
+            rgba(0, 15, 8, 0.6) 50%,
+            rgba(0, 15, 8, 0.38) 100%
+          ),
+          linear-gradient(0deg, rgba(0, 15, 8, 0.45) 0%, transparent 40%);
+      }
+      .hero-content {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        padding-top: 72px;
+      }
+      .hero-text {
+        max-width: 660px;
+        color: #fff;
+        text-shadow:
+          0 2px 6px rgba(0, 0, 0, 0.55),
+          0 6px 28px rgba(0, 0, 0, 0.45);
+      }
+      .hero-text .btn {
+        text-shadow: none;
+      }
+      .hero-text h1 {
+        font-size: clamp(44px, 7.5vw, 88px);
+        line-height: 1;
+        font-weight: 800;
+        letter-spacing: -2.5px;
+        margin-bottom: 18px;
+      }
+      .hero-text h2 {
+        font-size: clamp(19px, 2.5vw, 28px);
+        font-weight: 700;
+        color: var(--yellow);
+        margin-bottom: 20px;
+        line-height: 1.3;
+      }
+      .hero-text p {
+        color: #e1efe7;
+        font-size: 17px;
+        max-width: 520px;
+        margin-bottom: 34px;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .hero-text > * {
+        opacity: 0;
+        transform: translateY(24px);
+        animation: rise 0.9s forwards;
+      }
+      .hero-text > *:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .hero-text > *:nth-child(2) {
+        animation-delay: 0.35s;
+      }
+      .hero-text > *:nth-child(3) {
+        animation-delay: 0.5s;
+      }
+      .hero-text > *:nth-child(4) {
+        animation-delay: 0.65s;
+      }
+      @keyframes rise {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      /* STATS */
+      .stats {
+        position: relative;
+        z-index: 6;
+        margin-top: -66px;
+        margin-bottom: 64px;
+      }
+      .stats .container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        background: #fff;
+        border-radius: 24px;
+        border-top: 5px solid var(--yellow);
+        box-shadow: 0 34px 60px -26px rgba(0, 50, 25, 0.4);
+        overflow: hidden;
+      }
+      .stat {
+        padding: 32px 10px;
+        text-align: center;
+        border-right: 1px solid var(--line);
+      }
+      .stat:last-child {
+        border: 0;
+      }
+      .stat b {
+        display: block;
+        font-size: clamp(34px, 4vw, 48px);
+        font-weight: 500;
+        color: var(--green);
+        line-height: 1.1;
+      }
+      .stat span {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 400;
+      }
+      /* SECTIONS */
+      section {
+        padding: 96px 0;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--green);
+        margin-bottom: 10px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 26px;
+        height: 4px;
+        border-radius: 4px;
+        background: var(--yellow);
+      }
+      .sec-title {
+        font-size: clamp(30px, 4vw, 46px);
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: var(--green-dd);
+        line-height: 1.1;
+      }
+      .sec-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 44px;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      #leadership {
+        background: var(--green-t);
+        padding: 0;
+      }
+      #leadership .president {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        display: grid;
+        grid-template-columns: minmax(320px, 46%) 1fr;
+        gap: 0;
+        align-items: stretch;
+        min-height: 100vh;
+      }
+      .president > div:last-child {
+        align-self: center;
+        padding: clamp(40px, 7vw, 110px);
+        max-width: 760px;
+      }
+      .pres-photo {
+        height: 100%;
+      }
+      .pres-photo img {
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        object-fit: cover;
+        object-position: center 22%;
+        border-radius: 0;
+      }
+      .president h2 {
+        font-size: clamp(28px, 4vw, 44px);
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: var(--green-dd);
+        margin-bottom: 18px;
+        line-height: 1.1;
+      }
+      .president p {
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
+      .president strong {
+        display: block;
+        color: var(--green-dd);
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+      }
+      .card {
+        position: relative;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: 0.35s;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 4px;
+        background: var(--yellow);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+        z-index: 2;
+      }
+      .card:hover {
+        border-color: transparent;
+        box-shadow: 0 34px 60px -26px rgba(0, 60, 30, 0.45);
+      }
+      .card:hover::before {
+        transform: scaleX(1);
+      }
+      .card .img {
+        height: 190px;
+        overflow: hidden;
+        background: var(--green);
+      }
+      .card .img svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        transition: transform 0.6s;
+      }
+      .card:hover .img svg {
+        transform: scale(1.07);
+      }
+      .card .body {
+        padding: 26px;
+      }
+      .card h3 {
+        font-size: 20px;
+        line-height: 1.3;
+        margin-bottom: 12px;
+        color: var(--green-dd);
+      }
+      .info {
+        display: grid;
+        gap: 4px;
+        margin-bottom: 14px;
+        font-size: 13.5px;
+        color: var(--green);
+        font-weight: 600;
+      }
+      .info b {
+        display: inline-block;
+        min-width: 54px;
+        color: var(--ink);
+      }
+      .card p {
+        color: var(--muted);
+        font-size: 14.5px;
+        margin-bottom: 20px;
+      }
+      /* NEWS */
+      .news {
+        position: relative;
+        overflow: hidden;
+        background: var(--grad-deep);
+      }
+      .news .container {
+        position: relative;
+      }
+      .news .sec-title {
+        color: #fff;
+      }
+      .news .eyebrow {
+        color: var(--yellow);
+      }
+      .news .btn-outline {
+        border-color: rgba(255, 255, 255, 0.6);
+        color: #fff;
+      }
+      .news .btn-outline:hover {
+        background: var(--yellow);
+        border-color: var(--yellow);
+        color: var(--green-dd);
+      }
+      .pill {
+        display: inline-block;
+        background: var(--yellow);
+        color: var(--green-dd);
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 4px 11px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+      }
+      .date {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+      .more {
+        color: var(--green);
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .more:hover {
+        text-decoration: underline;
+      }
+      /* SECTION GLOWS */
+      #events,
+      .news {
+        position: relative;
+        overflow: hidden;
+      }
+      #events .container,
+      .news .container {
+        position: relative;
+        z-index: 1;
+      }
+      .gl {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        filter: blur(55px);
+        animation: orbit 16s linear infinite;
+      }
+      .gl-green {
+        width: 540px;
+        height: 540px;
+        right: -120px;
+        top: -100px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 200, 83, 0.6),
+          rgba(0, 200, 83, 0) 70%
+        );
+      }
+      .gl-green2 {
+        width: 480px;
+        height: 480px;
+        left: -140px;
+        bottom: -160px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 200, 83, 0.5),
+          rgba(0, 200, 83, 0) 70%
+        );
+        animation-direction: reverse;
+        animation-delay: -5s;
+      }
+      .gl-yel {
+        width: 540px;
+        height: 540px;
+        right: -120px;
+        top: -100px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 214, 0, 0.55),
+          rgba(255, 214, 0, 0) 70%
+        );
+      }
+      .gl-yel2 {
+        width: 480px;
+        height: 480px;
+        left: -140px;
+        bottom: -160px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 214, 0, 0.45),
+          rgba(255, 214, 0, 0) 70%
+        );
+        animation-direction: reverse;
+        animation-delay: -5s;
+      }
+      @keyframes orbit {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        25% {
+          transform: translate(-170px, 90px) scale(1.12);
+        }
+        50% {
+          transform: translate(-40px, 210px) scale(1);
+        }
+        75% {
+          transform: translate(130px, 80px) scale(1.12);
+        }
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+      }
+      /* GALLERY */
+      #gallery {
+        background: #fff;
+      }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+      .gal {
+        position: relative;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        aspect-ratio: 4/3;
+        background: var(--green-t);
+      }
+      .gal img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s;
+      }
+      .gal:hover img {
+        transform: scale(1.07);
+      }
+      .gal::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 5px;
+        background: var(--yellow);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+      }
+      .gal:hover::after {
+        transform: scaleX(1);
+      }
+      /* FOOTER */
+      footer {
+        position: relative;
+        background: var(--grad-deep);
+        color: rgba(255, 255, 255, 0.82);
+        padding: 76px 0 26px;
+      }
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: var(--yellow);
+      }
+      .foot {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+      }
+      footer h4 {
+        color: #fff;
+        margin-bottom: 16px;
+      }
+      footer li {
+        list-style: none;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      footer li a:hover {
+        color: var(--yellow);
+      }
+      .socials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .socials a {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        transition: 0.25s;
+      }
+      .socials svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .socials svg.fill {
+        fill: currentColor;
+        stroke: none;
+      }
+      .socials a:hover {
+        background: var(--yellow);
+        border-color: var(--yellow);
+        color: var(--green-dd);
+        transform: translateY(-3px);
+      }
+      .copy {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        margin-top: 44px;
+        padding-top: 20px;
+        font-size: 13px;
+      }
+      /* SCROLL REVEAL */
+      .js .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease,
+          box-shadow 0.35s,
+          border-color 0.35s;
+      }
+      .js .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+      .js .card.reveal.in:hover {
+        transform: translateY(-8px);
+      }
+      /* RESPONSIVE */
+      @media (max-width: 960px) {
+        .nav ul {
+          position: absolute;
+          top: 72px;
+          left: 0;
+          right: 0;
+          background: #fff;
+          flex-direction: column;
+          padding: 14px;
+          display: none;
+          border-bottom: 1px solid var(--line);
+          box-shadow: 0 20px 30px -20px rgba(0, 50, 25, 0.3);
+        }
+
+        .nav ul.open {
+          display: flex;
+        }
+        .nav ul a.active {
+          background: transparent;
+        }
+        .menu-btn {
+          display: block;
+        }
+        .nav > .btn {
+          display: none;
+        }
+        .mob-only {
+          display: block;
+          margin-top: 6px;
+        }
+        .nav ul .mob-only a {
+          display: block;
+          text-align: center;
+          padding: 13px;
+          border-radius: 14px;
+          color: var(--green-dd);
+        }
+        #leadership .president {
+          grid-template-columns: 1fr;
+          min-height: 0;
+        }
+        .pres-photo {
+          max-width: none;
+        }
+        .pres-photo img {
+          min-height: 0;
+          height: 78vh;
+        }
+        .president > div:last-child {
+          padding: 44px 6% 64px;
+        }
+        .foot {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stats .container {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat:nth-child(2) {
+          border-right: 0;
+        }
+        .stat:nth-child(n + 3) {
+          border-top: 1px solid var(--line);
+        }
+      }
+      @media (max-width: 700px) {
+        .grid-2,
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        section {
+          padding: 68px 0;
+        }
+        .foot {
+          grid-template-columns: 1fr;
+        }
+        .hero-btns .btn {
+          flex: 1;
+          text-align: center;
+        }
+        .sec-head .btn {
+          width: 100%;
+          text-align: center;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero-text > * {
+          animation: none;
+          opacity: 1;
+          transform: none;
+        }
+        .gl {
+          animation: none;
+        }
+        .slide.active,
+        .slide.active img,
+        .slide.prev img {
+          animation: none;
+        }
+        .js .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a href="#" class="brand"
+          ><img src="nicesa_logo.jpeg" alt="NICE-SA logo" /> NICE-SA FUTA</a
+        >
+        <ul id="menu">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="lead.html">Leadership</a></li>
+          <li><a href="#news">Blog/News</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="constitution.html">Constitution</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="mob-only">
+            <a href="#contact" class="btn btn-accent">Join NICE-SA</a>
+          </li>
+        </ul>
+        <a href="#contact" class="btn btn-accent">Join NICE-SA</a>
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <div class="hero">
+      <div class="slides">
+        <div class="slide active">
+          <img
+            src="IMG_2124.jpg"
+            alt="NICE-SA members standing together"
+            style="object-position: center 35%"
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="PXL_20260724_163906083.PORTRAIT~2.jpg"
+            alt="Members taking the oath"
+            style="object-position: center 30%"
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="PXL_20260724_164228048~2.jpg"
+            alt="Students' Union session"
+            style="object-position: center 55%"
+          />
+        </div>
+      </div>
+      <div class="hero-content">
+        <div class="container">
+          <div class="hero-text">
+            <h1>NICE-SA FUTA</h1>
+            <h2>Building Engineers. Creating Leaders. Leaving a Legacy.</h2>
+            <p>
+              Welcome to the Nigerian Institute of Civil Engineers Students
+              Association, Federal University of Technology, Akure.
+            </p>
+            <div class="hero-btns">
+              <a href="#contact" class="btn btn-accent">Join NICE-SA</a
+              ><a href="#legacy" class="btn btn-ghost">Explore Our Legacy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats" id="about">
+      <div class="container">
+        <div class="stat">
+          <b data-count="12">0</b><span>Years of legacy</span>
+        </div>
+        <div class="stat">
+          <b data-count="500" data-suffix="+">0</b><span>Members</span>
+        </div>
+        <div class="stat">
+          <b data-count="40" data-suffix="+">0</b><span>Events each year</span>
+        </div>
+        <div class="stat"><b data-count="7">0</b><span>Committees</span></div>
+      </div>
+    </div>
+
+    <section id="leadership">
+      <div class="container president">
+        <div class="pres-photo">
+          <img
+            src="PXL_20260724_161825112~2.jpg"
+            alt="President of NICE-SA FUTA"
+          />
+        </div>
+        <div>
+          <span class="eyebrow">Leadership</span>
+          <h2>Message from the President</h2>
+          <p>
+            Welcome to NICE-SA FUTA. Our members are training to build the
+            roads, bridges, and water systems that Nigeria depends on. This
+            session, we are focused on practical skills, mentorship from
+            practicing engineers, and a community where every student has a
+            place.
+          </p>
+          <p>
+            I invite you to attend our programs, take on a role, and help us
+            leave the association stronger than we found it.
+          </p>
+          <p><strong>Engr. John Doe</strong>President, NICE-SA FUTA</p>
+          <br /><a href="#" class="btn btn-outline">Meet the leadership</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="gl gl-green"></div>
+      <div class="gl gl-green2"></div>
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <span class="eyebrow">Don't miss out</span>
+            <h2 class="sec-title">Upcoming events</h2>
+          </div>
+          <a href="#" class="btn btn-outline">View All Events</a>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="img">
+              <svg
+                viewBox="0 0 400 190"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                aria-label="Laptop with code"
+              >
+                <rect width="400" height="190" fill="#00843D" />
+                <circle cx="350" cy="25" r="90" fill="#fff" opacity=".08" />
+                <circle cx="45" cy="175" r="70" fill="#fff" opacity=".08" />
+                <rect
+                  x="120"
+                  y="38"
+                  width="160"
+                  height="100"
+                  rx="9"
+                  fill="#00331A"
+                />
+                <rect
+                  x="134"
+                  y="54"
+                  width="60"
+                  height="7"
+                  rx="3"
+                  fill="#FCD116"
+                />
+                <rect
+                  x="146"
+                  y="70"
+                  width="90"
+                  height="7"
+                  rx="3"
+                  fill="#CDEBD9"
+                />
+                <rect x="146" y="86" width="50" height="7" rx="3" fill="#fff" />
+                <rect
+                  x="134"
+                  y="102"
+                  width="76"
+                  height="7"
+                  rx="3"
+                  fill="#FCD116"
+                />
+                <rect
+                  x="100"
+                  y="140"
+                  width="200"
+                  height="12"
+                  rx="6"
+                  fill="#EAF7F0"
+                />
+                <text
+                  x="226"
+                  y="128"
+                  font-size="26"
+                  font-weight="800"
+                  fill="#CDEBD9"
+                  font-family="monospace"
+                >
+                  &lt;/&gt;
+                </text>
+              </svg>
+            </div>
+            <div class="body">
+              <h3>Software Training</h3>
+              <div class="info">
+                <span><b>Date</b>Sat 17 Oct 2026</span
+                ><span><b>Time</b>10:00 AM</span
+                ><span><b>Venue</b>ICT Lab, School of Engineering</span>
+              </div>
+              <p>
+                Hands-on sessions to help members pick up practical engineering
+                software skills, from drawing and design tools to analysis
+                packages. Bring your laptop.
+              </p>
+              <a href="#" class="btn btn-outline">View Event</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="img">
+              <svg
+                viewBox="0 0 400 190"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                aria-label="Students being welcomed"
+              >
+                <rect width="400" height="190" fill="#006B31" />
+                <circle cx="350" cy="25" r="90" fill="#fff" opacity=".08" />
+                <circle cx="45" cy="175" r="70" fill="#fff" opacity=".08" />
+                <rect
+                  x="110"
+                  y="22"
+                  width="180"
+                  height="22"
+                  rx="11"
+                  fill="#FCD116"
+                />
+                <text
+                  x="200"
+                  y="38"
+                  font-size="12"
+                  font-weight="800"
+                  fill="#00331A"
+                  text-anchor="middle"
+                  font-family="sans-serif"
+                >
+                  WELCOME
+                </text>
+                <circle cx="150" cy="84" r="17" fill="#FCD116" />
+                <circle cx="200" cy="74" r="17" fill="#fff" />
+                <circle cx="250" cy="84" r="17" fill="#CDEBD9" />
+                <rect
+                  x="128"
+                  y="106"
+                  width="44"
+                  height="60"
+                  rx="22"
+                  fill="#FCD116"
+                />
+                <rect
+                  x="178"
+                  y="96"
+                  width="44"
+                  height="70"
+                  rx="22"
+                  fill="#fff"
+                />
+                <rect
+                  x="228"
+                  y="106"
+                  width="44"
+                  height="60"
+                  rx="22"
+                  fill="#CDEBD9"
+                />
+              </svg>
+            </div>
+            <div class="body">
+              <h3>Freshers' Orientation</h3>
+              <div class="info">
+                <span><b>Date</b>Sat 31 Oct 2026</span
+                ><span><b>Time</b>10:00 AM</span
+                ><span><b>Venue</b>FUTA Main Auditorium</span>
+              </div>
+              <p>
+                A warm welcome for new civil engineering students. Meet the
+                executives, learn how the association works and find out how to
+                get involved.
+              </p>
+              <a href="#" class="btn btn-outline">View Event</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="img">
+              <svg
+                viewBox="0 0 400 190"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                aria-label="Event week calendar"
+              >
+                <rect width="400" height="190" fill="#00843D" />
+                <circle cx="350" cy="25" r="90" fill="#fff" opacity=".08" />
+                <circle cx="45" cy="175" r="70" fill="#fff" opacity=".08" />
+                <rect
+                  x="130"
+                  y="34"
+                  width="140"
+                  height="124"
+                  rx="12"
+                  fill="#fff"
+                />
+                <rect
+                  x="130"
+                  y="34"
+                  width="140"
+                  height="30"
+                  rx="12"
+                  fill="#FCD116"
+                />
+                <rect x="130" y="50" width="140" height="14" fill="#FCD116" />
+                <text
+                  x="200"
+                  y="56"
+                  font-size="16"
+                  font-weight="800"
+                  fill="#00331A"
+                  text-anchor="middle"
+                  font-family="sans-serif"
+                >
+                  WEEK
+                </text>
+                <rect
+                  x="149"
+                  y="78"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#CDEBD9"
+                />
+                <rect
+                  x="171"
+                  y="78"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#CDEBD9"
+                />
+                <rect
+                  x="193"
+                  y="78"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#CDEBD9"
+                />
+                <rect
+                  x="215"
+                  y="78"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#CDEBD9"
+                />
+                <rect
+                  x="237"
+                  y="78"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#CDEBD9"
+                />
+                <rect
+                  x="149"
+                  y="102"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#FCD116"
+                />
+                <rect
+                  x="171"
+                  y="102"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#FCD116"
+                />
+                <rect
+                  x="193"
+                  y="102"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#FCD116"
+                />
+                <rect
+                  x="215"
+                  y="102"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#FCD116"
+                />
+                <rect
+                  x="237"
+                  y="102"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#FCD116"
+                />
+                <rect
+                  x="149"
+                  y="126"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#CDEBD9"
+                />
+                <rect
+                  x="171"
+                  y="126"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#CDEBD9"
+                />
+                <rect
+                  x="193"
+                  y="126"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#CDEBD9"
+                />
+                <rect
+                  x="215"
+                  y="126"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#CDEBD9"
+                />
+                <rect
+                  x="237"
+                  y="126"
+                  width="14"
+                  height="14"
+                  rx="3"
+                  fill="#CDEBD9"
+                />
+              </svg>
+            </div>
+            <div class="body">
+              <h3>NICE-SA Week</h3>
+              <div class="info">
+                <span><b>Date</b>Mon 16 – Sat 21 Nov 2026</span
+                ><span><b>Time</b>9:00 AM daily</span
+                ><span><b>Venue</b>Engineering Complex, FUTA</span>
+              </div>
+              <p>
+                A full week of lectures, competitions, site activities and
+                social events celebrating civil engineering and our members.
+              </p>
+              <a href="#" class="btn btn-outline">View Event</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="img">
+              <svg
+                viewBox="0 0 400 190"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                aria-label="100 days badge"
+              >
+                <rect width="400" height="190" fill="#00441F" />
+                <circle cx="350" cy="25" r="90" fill="#fff" opacity=".08" />
+                <circle cx="45" cy="175" r="70" fill="#fff" opacity=".08" />
+                <circle cx="200" cy="92" r="60" fill="#FCD116" />
+                <circle
+                  cx="200"
+                  cy="92"
+                  r="48"
+                  fill="none"
+                  stroke="#00331A"
+                  stroke-width="3"
+                  stroke-dasharray="6 5"
+                />
+                <text
+                  x="200"
+                  y="106"
+                  font-size="44"
+                  font-weight="800"
+                  fill="#00331A"
+                  text-anchor="middle"
+                  font-family="sans-serif"
+                >
+                  100
+                </text>
+                <text
+                  x="200"
+                  y="128"
+                  font-size="14"
+                  font-weight="800"
+                  fill="#00331A"
+                  text-anchor="middle"
+                  font-family="sans-serif"
+                >
+                  DAYS
+                </text>
+                <polygon
+                  points="168,140 192,148 176,184 160,168"
+                  fill="#CDEBD9"
+                />
+                <polygon
+                  points="232,140 208,148 224,184 240,168"
+                  fill="#CDEBD9"
+                />
+              </svg>
+            </div>
+            <div class="body">
+              <h3>100 Days in Office</h3>
+              <div class="info">
+                <span><b>Date</b>Fri 18 Dec 2026</span
+                ><span><b>Time</b>4:00 PM</span
+                ><span><b>Venue</b>Engineering Lecture Theatre</span>
+              </div>
+              <p>
+                The current administration reports on its first 100 days: what
+                was promised, what has been done and the plans ahead.
+              </p>
+              <a href="#" class="btn btn-outline">View Event</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="news" id="news">
+      <div class="gl gl-yel"></div>
+      <div class="gl gl-yel2"></div>
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <span class="eyebrow">Stay updated</span>
+            <h2 class="sec-title">Blog / News</h2>
+          </div>
+          <a href="#" class="btn btn-outline">View All Posts</a>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="img">
+              <svg
+                viewBox="0 0 400 190"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                aria-label="Scales of justice"
+              >
+                <rect width="400" height="190" fill="#00441F" />
+                <circle cx="350" cy="25" r="90" fill="#fff" opacity=".08" />
+                <circle cx="45" cy="175" r="70" fill="#fff" opacity=".08" />
+                <rect x="196" y="40" width="8" height="104" fill="#FCD116" />
+                <rect
+                  x="160"
+                  y="142"
+                  width="80"
+                  height="10"
+                  rx="5"
+                  fill="#FCD116"
+                />
+                <rect
+                  x="110"
+                  y="50"
+                  width="180"
+                  height="9"
+                  rx="4"
+                  fill="#FCD116"
+                />
+                <g stroke="#fff" stroke-width="2">
+                  <path
+                    d="M125 59L100 104M125 59L150 104M275 59L250 104M275 59L300 104"
+                  />
+                </g>
+                <path
+                  d="M92 104h66c0 18-15 28-33 28s-33-10-33-28z"
+                  fill="#CDEBD9"
+                />
+                <path
+                  d="M242 104h66c0 18-15 28-33 28s-33-10-33-28z"
+                  fill="#CDEBD9"
+                />
+              </svg>
+            </div>
+            <div class="body">
+              <span class="pill">Advocacy</span>
+              <div class="date">5 Oct 2026</div>
+              <h3>
+                The Association Advocates for the Right in an Issue Involving
+                Someone Outside the Association
+              </h3>
+              <p>
+                NICE-SA stood up for fairness in a matter between a member of
+                the public and a third party, showing that the association
+                speaks up for what is right.
+              </p>
+              <a href="#" class="more">Read more →</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="img">
+              <svg
+                viewBox="0 0 400 190"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                aria-label="Members at a conference"
+              >
+                <rect width="400" height="190" fill="#006B31" />
+                <circle cx="350" cy="25" r="90" fill="#fff" opacity=".08" />
+                <circle cx="45" cy="175" r="70" fill="#fff" opacity=".08" />
+                <rect
+                  x="110"
+                  y="24"
+                  width="180"
+                  height="62"
+                  rx="6"
+                  fill="#00331A"
+                />
+                <rect x="132" y="58" width="22" height="20" fill="#FCD116" />
+                <rect x="166" y="44" width="22" height="34" fill="#CDEBD9" />
+                <rect x="200" y="52" width="22" height="26" fill="#fff" />
+                <rect x="234" y="36" width="22" height="42" fill="#FCD116" />
+                <circle cx="90" cy="130" r="13" fill="#FCD116" />
+                <circle cx="134" cy="130" r="13" fill="#fff" />
+                <circle cx="178" cy="130" r="13" fill="#CDEBD9" />
+                <circle cx="222" cy="130" r="13" fill="#FCD116" />
+                <circle cx="266" cy="130" r="13" fill="#fff" />
+                <circle cx="310" cy="130" r="13" fill="#CDEBD9" />
+                <rect
+                  x="70"
+                  y="146"
+                  width="260"
+                  height="44"
+                  rx="20"
+                  fill="#00331A"
+                  opacity=".55"
+                />
+              </svg>
+            </div>
+            <div class="body">
+              <span class="pill">Conference</span>
+              <div class="date">2 Oct 2026</div>
+              <h3>The President Led 24 Members to a Professional Conference</h3>
+              <p>
+                Members joined the president at a professional engineering
+                conference to learn from practitioners, network and bring new
+                ideas back to campus.
+              </p>
+              <a href="#" class="more">Read more →</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="img">
+              <svg
+                viewBox="0 0 400 190"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                aria-label="Megaphone"
+              >
+                <rect width="400" height="190" fill="#00441F" />
+                <circle cx="350" cy="25" r="90" fill="#fff" opacity=".08" />
+                <circle cx="45" cy="175" r="70" fill="#fff" opacity=".08" />
+                <polygon points="120,92 236,46 236,142" fill="#FCD116" />
+                <rect x="98" y="78" width="30" height="30" rx="5" fill="#fff" />
+                <rect
+                  x="118"
+                  y="108"
+                  width="16"
+                  height="36"
+                  rx="4"
+                  fill="#fff"
+                />
+                <g
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                >
+                  <path d="M256 76q22 18 0 38" />
+                  <path d="M276 62q34 32 0 66" />
+                </g>
+              </svg>
+            </div>
+            <div class="body">
+              <span class="pill">Congress</span>
+              <div class="date">25 Sep 2026</div>
+              <h3>Revolution from the First Administrative Congress</h3>
+              <p>
+                The first administrative congress set a bold new direction, with
+                fresh plans for how the association runs, serves members and
+                delivers programs.
+              </p>
+              <a href="#" class="more">Read more →</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="img">
+              <svg
+                viewBox="0 0 400 190"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                aria-label="Ballot box"
+              >
+                <rect width="400" height="190" fill="#006B31" />
+                <circle cx="350" cy="25" r="90" fill="#fff" opacity=".08" />
+                <circle cx="45" cy="175" r="70" fill="#fff" opacity=".08" />
+                <g transform="rotate(-8 200 70)">
+                  <rect
+                    x="176"
+                    y="34"
+                    width="48"
+                    height="66"
+                    rx="4"
+                    fill="#FCD116"
+                  />
+                  <path
+                    d="M186 64l9 9 17-20"
+                    stroke="#00331A"
+                    stroke-width="4"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <rect
+                  x="128"
+                  y="88"
+                  width="144"
+                  height="76"
+                  rx="9"
+                  fill="#fff"
+                />
+                <rect
+                  x="164"
+                  y="98"
+                  width="72"
+                  height="8"
+                  rx="4"
+                  fill="#00441F"
+                />
+                <text
+                  x="200"
+                  y="146"
+                  font-size="20"
+                  font-weight="800"
+                  fill="#00843D"
+                  text-anchor="middle"
+                  font-family="sans-serif"
+                >
+                  VOTE
+                </text>
+              </svg>
+            </div>
+            <div class="body">
+              <span class="pill">Election</span>
+              <div class="date">18 Sep 2026</div>
+              <h3>
+                4 Members to Represent Us at the NUESA Level in the Coming
+                Election
+              </h3>
+              <p>
+                Four of our members are standing to represent NICE-SA FUTA at
+                the NUESA level in the coming election. Show them your support.
+              </p>
+              <a href="#" class="more">Read more →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <span class="eyebrow">Moments</span>
+            <h2 class="sec-title">Gallery</h2>
+          </div>
+        </div>
+        <div class="gallery">
+          <figure class="gal">
+            <img
+              src="IMG_2124.jpg"
+              alt="NICE-SA members standing together"
+              loading="lazy"
+              style="object-position: center 35%"
+            />
+          </figure>
+          <figure class="gal">
+            <img
+              src="PXL_20260724_162619754~2.jpg"
+              alt="Members taking the oath"
+              loading="lazy"
+              style="object-position: center 30%"
+            />
+          </figure>
+          <figure class="gal">
+            <img
+              src="PXL_20260724_164602970~2.jpg"
+              alt="Students' Union session"
+              loading="lazy"
+              style="object-position: center 55%"
+            />
+          </figure>
+          <figure class="gal">
+            <img
+              src="PXL_20260724_161825112_2.jpg"
+              alt="President of NICE-SA FUTA"
+              loading="lazy"
+              style="object-position: center 22%"
+            />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="container">
+        <div class="foot">
+          <div>
+            <h4>NICE-SA FUTA</h4>
+            <p style="font-size: 14px">
+              The student association for civil engineers at the Federal
+              University of Technology, Akure.
+            </p>
+          </div>
+          <div>
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="lead.html">Leadership</a></li>
+              <li><a href="blog.html">Events</a></li>
+              <li><a href="blog.html">Blog/News</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="constitution.html">Constitution</a></li>
+              <li><a href="#">Membership</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="#">Administrations</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Connect With Us</h4>
+            <div class="socials">
+              <a href="#" aria-label="Instagram"
+                ><svg viewBox="0 0 24 24">
+                  <rect width="20" height="20" x="2" y="2" rx="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <path d="M17.5 6.5h.01" /></svg
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  /></svg
+              ></a>
+              <a href="#" aria-label="X"
+                ><svg class="fill" viewBox="0 0 24 24">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                  /></svg
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  />
+                  <rect width="4" height="12" x="2" y="9" />
+                  <circle cx="4" cy="4" r="2" /></svg
+              ></a>
+              <a href="#" aria-label="WhatsApp"
+                ><svg viewBox="0 0 24 24">
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z" />
+                  <path
+                    d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .5c-.7-.4-1.3-1-1.7-1.7l.5-1-1-2z"
+                  /></svg
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="copy">
+          © 2026 NICE-SA FUTA. All Rights Reserved. Federal University of
+          Technology, Akure.
+        </div>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        var els = document.querySelectorAll("[data-count]"),
+          box = document.querySelector(".stats"),
+          DUR = 600,
+          reduce = matchMedia("(prefers-reduced-motion: reduce)").matches,
+          started = false;
+        function run(el) {
+          var t = +el.dataset.count,
+            s = el.dataset.suffix || "";
+          if (reduce) {
+            el.textContent = t + s;
+            return;
+          }
+          var st = performance.now();
+          (function f(n) {
+            var p = Math.min((n - st) / DUR, 1);
+            el.textContent = Math.round(t * p) + (p < 1 ? "" : s);
+            if (p < 1) requestAnimationFrame(f);
+          })(st);
+        }
+        function go() {
+          if (started) return;
+          started = true;
+          els.forEach(run);
+        }
+        new IntersectionObserver(
+          function (es) {
+            if (es[0].isIntersecting) go();
+          },
+          { threshold: 0.3 },
+        ).observe(box);
+      })();
+    </script>
+    <script>
+      (function () {
+        document.documentElement.classList.add("js");
+        var hd = document.querySelector("header"),
+          btn = document.getElementById("menuBtn"),
+          menu = document.getElementById("menu"),
+          links = [].slice.call(
+            menu.querySelectorAll('a[href^="#"]:not(.btn)'),
+          ),
+          map = {};
+        links.forEach(function (a) {
+          var id = a.getAttribute("href").slice(1);
+          if (id) map[id] = a;
+        });
+        function setActive(a) {
+          links.forEach(function (l) {
+            l.classList.remove("active");
+          });
+          if (a) a.classList.add("active");
+        }
+        function sc() {
+          hd.classList.toggle("scrolled", scrollY > 20);
+          if (scrollY < 300) setActive(links[0]);
+        }
+        sc();
+        addEventListener("scroll", sc, { passive: true });
+        function tog(o) {
+          menu.classList.toggle("open", o);
+          btn.textContent = o ? "✕" : "☰";
+          btn.setAttribute("aria-expanded", o);
+          btn.setAttribute("aria-label", o ? "Close menu" : "Open menu");
+        }
+        btn.addEventListener("click", function () {
+          tog(!menu.classList.contains("open"));
+        });
+        menu.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            tog(false);
+          });
+        });
+        var rv = document.querySelectorAll(
+          ".card,.stat,.gal,.president>*,.sec-head,.foot>div",
+        );
+        rv.forEach(function (e) {
+          e.classList.add("reveal");
+        });
+        var ro = new IntersectionObserver(
+          function (es) {
+            es.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                ro.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.15 },
+        );
+        rv.forEach(function (e) {
+          ro.observe(e);
+        });
+        var so = new IntersectionObserver(
+          function (es) {
+            es.forEach(function (e) {
+              if (e.isIntersecting && scrollY >= 300)
+                setActive(map[e.target.id]);
+            });
+          },
+          { rootMargin: "-45% 0px -50% 0px" },
+        );
+        Object.keys(map).forEach(function (id) {
+          var s = document.getElementById(id);
+          if (s) so.observe(s);
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var slides = [].slice.call(document.querySelectorAll(".slide")),
+          n = slides.length,
+          i = 0,
+          DELAY = 6000;
+        slides[0].classList.add("active");
+        function go(k) {
+          k = (k + n) % n;
+          if (k === i) return;
+          var cur = slides[i],
+            nx = slides[k];
+          slides.forEach(function (s) {
+            s.classList.remove("prev");
+          });
+          cur.classList.remove("active");
+          cur.classList.add("prev");
+          nx.classList.add("active");
+          i = k;
+        }
+        setInterval(function () {
+          go(i + 1);
+        }, DELAY);
+      })();
+    </script>
+  </body>
+</html>

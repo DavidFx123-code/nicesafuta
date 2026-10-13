@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>About | NICE-SA FUTA</title>
+    <meta
+      name="description"
+      content="Developing competent, ethical and innovative civil engineers for the future."
+    />
+    <link rel="icon" href="nicesa_logo.jpeg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --green: #0b7a3e;
+        --green-d: #064e2a;
+        --green-m: #16a34a;
+        --green-l: #eaf6ee;
+        --green-xl: #f5fbf7;
+        --yellow: #fcd116;
+        --gr: linear-gradient(135deg, #064e2a 0%, #0b7a3e 55%, #16a34a 100%);
+        --gold: linear-gradient(135deg, #fff3a0 0%, #fcd116 40%, #ffb300 100%);
+        --ink: #0d1b13;
+        --muted: #566a5d;
+        --line: #dcebe1;
+        --head: "Bricolage Grotesque", system-ui, sans-serif;
+        --body: "DM Sans", system-ui, sans-serif;
+        --shadow: 0 14px 34px -16px rgba(6, 78, 42, 0.3);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+      body {
+        font-family: var(--body);
+        color: var(--ink);
+        background: #fff;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--head);
+        line-height: 1.12;
+        letter-spacing: -0.025em;
+      }
+      .wrap {
+        width: min(1120px, 92%);
+        margin-inline: auto;
+      }
+      :focus-visible {
+        outline: 3px solid var(--green);
+        outline-offset: 3px;
+      }
+
+      /* HEADER */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: #fff;
+        box-shadow: 0 2px 18px rgba(6, 71, 31, 0.12);
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+      .bar {
+        max-width: 1200px;
+        margin: auto;
+        padding: 3px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 62px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--head);
+        font-weight: 800;
+        color: #06471f;
+        font-size: 1.3rem;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+      }
+      .brand img {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      nav a {
+        padding: 9px 17px;
+        border-radius: 999px;
+        font-weight: 500;
+        font-size: 1.06rem;
+        color: var(--ink);
+        transition: 0.2s;
+      }
+      nav a:hover,
+      nav a.on {
+        background: var(--green-l);
+        color: var(--green);
+      }
+      .join {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 56px;
+        padding: 0 27px;
+        background: #ffd21a;
+        color: #2b2300;
+        font-weight: 700;
+        font-size: 1.06rem;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(255, 210, 26, 0.45);
+        transition: 0.2s;
+        white-space: nowrap;
+      }
+      .join:hover {
+        transform: translateY(-2px);
+        background: #ffdc45;
+      }
+      nav .join-m {
+        display: none;
+      }
+      .burger {
+        display: none;
+        background: none;
+        border: 0;
+        color: #06471f;
+        cursor: pointer;
+        padding: 6px;
+      }
+      .burger svg {
+        width: 32px;
+        height: 32px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .burger .x {
+        display: none;
+      }
+      .burger[aria-expanded="true"] .x {
+        display: block;
+      }
+      .burger[aria-expanded="true"] .m {
+        display: none;
+      }
+      @media (max-width: 1100px) {
+        .bar {
+          padding: 3px 20px;
+        }
+        .burger {
+          display: block;
+        }
+        .join-d {
+          display: none;
+        }
+        nav {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 100%;
+          background: #fff;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 6px 20px 20px;
+          box-shadow: 0 18px 30px rgba(0, 0, 0, 0.15);
+          display: none;
+        }
+        nav.open {
+          display: flex;
+        }
+        nav a,
+        nav a:hover,
+        nav a.on {
+          border-radius: 0;
+          padding: 13px 0;
+          background: none;
+          color: var(--ink);
+        }
+        nav .join-m {
+          display: flex;
+          margin-top: 12px;
+          height: 52px;
+          padding: 0;
+          border-radius: 16px;
+          background: #ffd21a;
+          color: #2b2300;
+        }
+        nav .join-m:hover {
+          background: #ffdc45;
+          color: #2b2300;
+        }
+      }
+
+      /* HERO (no logo animation, no white area) */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          #033d1c 0%,
+          #055029 45%,
+          #0b7a3e 100%
+        );
+        padding: 5rem 0 8rem;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 46px 46px;
+        mask-image: linear-gradient(90deg, #000 15%, transparent 80%);
+        -webkit-mask-image: linear-gradient(90deg, #000 15%, transparent 80%);
+      }
+      .hero .wrap {
+        position: relative;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.45rem 1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.5rem;
+      }
+      .eyebrow i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--yellow);
+      }
+      .hero h1 {
+        font-size: clamp(2.7rem, 6.6vw, 4.9rem);
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.04;
+      }
+      .hero h1 em {
+        font-style: normal;
+        background: var(--gold);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .hero p {
+        margin-top: 1.4rem;
+        max-width: 44ch;
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 1.12rem;
+      }
+
+      section {
+        padding: 6rem 0;
+      }
+      .title {
+        font-size: clamp(1.9rem, 4vw, 2.7rem);
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 6px;
+        border-radius: 9px;
+        background: var(--gold);
+        margin-top: 0.8rem;
+      }
+      .sub {
+        color: var(--muted);
+        margin-top: 1rem;
+        max-width: 60ch;
+      }
+
+      /* VISION / MISSION */
+      .vm {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: -4rem;
+        position: relative;
+        z-index: 2;
+      }
+      .vm article {
+        background: #fff;
+        border-radius: 22px;
+        padding: 2.1rem;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .vm article::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 6px;
+        background: var(--gr);
+      }
+      .vm article:nth-child(2)::before {
+        background: var(--gold);
+      }
+      .vm article:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 26px 46px -20px rgba(6, 78, 42, 0.4);
+      }
+      .vm h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.6rem;
+        color: var(--green-d);
+      }
+      .vm p {
+        color: var(--muted);
+      }
+
+      /* OBJECTIVES */
+      #objectives {
+        background: var(--green-xl);
+      }
+      .obj {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.1rem;
+        margin-top: 2.4rem;
+      }
+      .obj div {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1.1rem 1.2rem;
+        font-weight: 600;
+        transition: 0.25s;
+      }
+      .obj div:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow);
+        border-color: var(--green-m);
+      }
+      .obj div::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 0;
+        background: var(--gr);
+        transition: width 0.35s;
+      }
+      .obj div:hover::after {
+        width: 100%;
+      }
+      .obj b {
+        flex: none;
+        width: 50px;
+        height: 54px;
+        display: grid;
+        place-items: center;
+        font-family: var(--head);
+        font-size: 0.95rem;
+        color: var(--green-d);
+        background: var(--gold);
+        clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+        transition: transform 0.35s;
+      }
+      .obj div:hover b {
+        transform: rotate(60deg) scale(1.05);
+      }
+      .obj div:hover b span {
+        display: block;
+        transform: rotate(-60deg);
+      }
+
+      /* HISTORY */
+      .hist {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 3.2rem;
+        align-items: center;
+      }
+      .hist p {
+        color: var(--muted);
+        margin-top: 1.1rem;
+      }
+      .hist p:first-of-type {
+        margin-top: 1.6rem;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .stat {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: 112px;
+        border-radius: 26px 8px 26px 8px;
+        padding: 1.1rem 1.3rem;
+        color: #fff;
+        background: var(--gr);
+        box-shadow: 0 20px 38px -20px rgba(6, 78, 42, 0.6);
+        transition:
+          transform 0.3s,
+          border-radius 0.4s;
+      }
+      .stat::after {
+        content: "";
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        right: -26px;
+        top: -26px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.16);
+      }
+      .stat:hover {
+        transform: translateY(-6px);
+        border-radius: 8px 26px 8px 26px;
+      }
+      .stat:nth-child(2) {
+        background: var(--gold);
+        color: var(--green-d);
+        border-radius: 8px 26px 8px 26px;
+      }
+      .stat:nth-child(2):hover {
+        border-radius: 26px 8px 26px 8px;
+      }
+      .stat:nth-child(2)::after {
+        background: rgba(255, 255, 255, 0.4);
+      }
+      .stat:nth-child(3) {
+        background: #fff;
+        color: var(--green-d);
+        border: 1.5px solid var(--green);
+      }
+      .stat:nth-child(3)::after {
+        background: var(--green-l);
+      }
+      .stat:nth-child(4) {
+        background: var(--green-l);
+        color: var(--green-d);
+        border-radius: 8px 26px 8px 26px;
+      }
+      .stat:nth-child(4):hover {
+        border-radius: 26px 8px 26px 8px;
+      }
+      .stat:nth-child(4)::after {
+        background: rgba(252, 209, 22, 0.45);
+      }
+      .stat strong {
+        position: relative;
+        display: block;
+        font-family: var(--head);
+        font-size: 2.1rem;
+        font-weight: 600;
+        line-height: 1.05;
+        margin-bottom: 0.15rem;
+      }
+      .stat span {
+        position: relative;
+        font-size: 0.9rem;
+        font-weight: 400;
+        opacity: 0.9;
+      }
+
+      /* LEGACY */
+      .legacy {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        background: var(--gr);
+      }
+      .legacy::before {
+        content: "";
+        position: absolute;
+        width: 440px;
+        height: 440px;
+        right: -150px;
+        top: -130px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(252, 209, 22, 0.35),
+          transparent 70%
+        );
+      }
+      .legacy .wrap {
+        position: relative;
+      }
+      .legacy .title {
+        color: #fff;
+      }
+      .legacy .sub {
+        color: #d3f0dc;
+      }
+      .tl {
+        position: relative;
+        margin-top: 3rem;
+        padding-left: 2.4rem;
+        display: grid;
+        gap: 1.1rem;
+      }
+      .tl::before {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 6px;
+        bottom: 6px;
+        width: 3px;
+        border-radius: 3px;
+        background: var(--gold);
+      }
+      .tl article {
+        position: relative;
+        background: #fff;
+        color: var(--ink);
+        border-radius: 16px;
+        padding: 1.3rem 1.6rem;
+        box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.6);
+      }
+      .tl article::before {
+        content: "";
+        position: absolute;
+        left: -2.4rem;
+        top: 1.7rem;
+        width: 19px;
+        height: 19px;
+        border-radius: 50%;
+        background: var(--gold);
+        border: 4px solid var(--green);
+        box-shadow: 0 0 0 2px var(--yellow);
+      }
+      .tl em {
+        font-style: normal;
+        font-family: var(--head);
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: var(--green);
+      }
+      .tl h3 {
+        font-size: 1.1rem;
+        margin-top: 0.1rem;
+      }
+      .tl p {
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+
+      /* FOOTER (matches reference) */
+      footer {
+        background: linear-gradient(160deg, #06471f, #0b7a3e 55%, #12a150);
+        color: #fff;
+        border-top: 5px solid var(--yellow);
+        line-height: 1.6;
+      }
+      .fg {
+        max-width: 1200px;
+        margin: auto;
+        padding: 56px 40px 0;
+        display: grid;
+        grid-template-columns: 303fr 215fr 214fr 268fr;
+        gap: 40px;
+      }
+      footer h4 {
+        font-family: var(--head);
+        font-size: 1.06rem;
+        font-weight: 700;
+        margin-bottom: 17px;
+        line-height: 1.4;
+        color: #fff;
+        letter-spacing: -0.01em;
+      }
+      footer ul {
+        padding: 0;
+      }
+      footer li {
+        list-style: none;
+        margin: 10px 0;
+        font-size: 1rem;
+      }
+      footer li:first-child {
+        margin-top: 0;
+      }
+      footer li a {
+        display: inline-block;
+        transition: 0.2s;
+      }
+      footer li a:hover {
+        color: var(--yellow);
+        padding-left: 4px;
+      }
+      .fb p {
+        max-width: 300px;
+      }
+      .soc {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 13px;
+      }
+      .soc a {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        transition: 0.2s;
+      }
+      .soc a:hover {
+        background: var(--yellow);
+        color: #2b2300;
+        transform: translateY(-3px);
+      }
+      .soc svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .copy {
+        max-width: 1200px;
+        margin: 56px auto 0;
+        padding: 0 40px;
+      }
+      .copy div {
+        border-top: 1px solid rgba(255, 255, 255, 0.22);
+        padding: 24px 0 30px;
+        font-size: 0.95rem;
+      }
+      @media (max-width: 900px) {
+        .fg {
+          grid-template-columns: 1fr 1fr;
+          padding: 48px 24px 0;
+        }
+        .copy {
+          padding: 0 24px;
+          margin-top: 40px;
+        }
+      }
+      @media (max-width: 520px) {
+        .fg {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .totop {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        border: 0;
+        cursor: pointer;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #2b2300;
+        background: #ffd21a;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        transition: 0.3s;
+        z-index: 60;
+      }
+      .totop.show {
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.7s,
+          transform 0.7s;
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (max-width: 940px) {
+        .hero {
+          padding: 4rem 0 6.5rem;
+        }
+        section {
+          padding: 4rem 0;
+        }
+        .vm {
+          margin-top: -3rem;
+        }
+        .vm,
+        .hist {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .stats {
+          gap: 0.9rem;
+        }
+        .stat {
+          min-height: 96px;
+          padding: 0.95rem 1rem;
+        }
+        .stat strong {
+          font-size: 1.75rem;
+        }
+        .stat span {
+          font-size: 0.85rem;
+        }
+        .tl {
+          padding-left: 2rem;
+        }
+        .tl article {
+          padding: 1.1rem 1.2rem;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="bar">
+        <a class="brand" href="index.html"
+          ><img src="nicesa_logo.jpeg" alt="NICE-SA logo" />NICE-SA FUTA</a
+        >
+        <nav id="nv">
+          <a href="index.html">Home</a><a class="on" href="about.html">About</a
+          ><a href="lead.html">Leadership</a><a href="blog.html">Blog/News</a
+          ><a href="gallery.html">Gallery</a
+          ><a href="constitution.html">Constitution</a
+          ><a href="contact.html">Contact</a>
+          <a class="join join-m" href="membership.html">Join NICE-SA</a>
+        </nav>
+        <a class="join join-d" href="membership.html">Join NICE-SA</a>
+        <button class="burger" id="bg" aria-label="Menu" aria-expanded="false">
+          <svg class="m" viewBox="0 0 24 24">
+            <path d="M3 6h18M3 12h18M3 18h18" /></svg
+          ><svg class="x" viewBox="0 0 24 24">
+            <path d="M5 5l14 14M19 5L5 19" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero" id="home">
+        <div class="wrap">
+          <span class="eyebrow"><i></i>STUDENT ASSOCIATION · FUTA AKURE</span>
+          <h1>About <em>NICE-SA</em> FUTA</h1>
+          <p>
+            Developing competent, ethical and innovative civil engineers for the
+            future.
+          </p>
+        </div>
+      </div>
+
+      <div class="wrap vm reveal" id="about">
+        <article>
+          <h3>Vision</h3>
+          <p>
+            To become a leading student professional association producing
+            competent, innovative and responsible future civil engineers.
+          </p>
+        </article>
+        <article>
+          <h3>Mission</h3>
+          <p>
+            To promote professional development, technical knowledge,
+            leadership, collaboration and service among civil engineering
+            students.
+          </p>
+        </article>
+      </div>
+
+      <section id="objectives">
+        <div class="wrap">
+          <h2 class="title reveal">Objectives</h2>
+          <div class="obj reveal">
+            <div>
+              <b><span>01</span></b
+              >Promote professional development
+            </div>
+            <div>
+              <b><span>02</span></b
+              >Encourage technical excellence
+            </div>
+            <div>
+              <b><span>03</span></b
+              >Develop leadership skills
+            </div>
+            <div>
+              <b><span>04</span></b
+              >Promote teamwork and collaboration
+            </div>
+            <div>
+              <b><span>05</span></b
+              >Organize educational and professional programs
+            </div>
+            <div>
+              <b><span>06</span></b
+              >Connect students with industry professionals
+            </div>
+            <div>
+              <b><span>07</span></b
+              >Encourage innovation and research
+            </div>
+            <div>
+              <b><span>08</span></b
+              >Promote ethical engineering practice
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="history" id="history">
+        <div class="wrap hist">
+          <div class="reveal">
+            <h2 class="title">Our history</h2>
+            <p>
+              NICE-SA FUTA is the student arm of the Nigerian Institution of
+              Civil Engineers at the Federal University of Technology, Akure. It
+              was founded in 2014 by the first set of civil engineering students
+              who wanted a platform to learn beyond the classroom and connect
+              with practising engineers.
+            </p>
+            <p>
+              From those early meetings, the association grew into a community
+              with regular programs, tutoring, site visits and mentorship. Each
+              executive has built on the work of the last, shaping students into
+              skilled and ethical professionals.
+            </p>
+            <p>
+              Today, NICE-SA FUTA continues to bridge the gap between academic
+              study and the demands of the engineering profession.
+            </p>
+          </div>
+          <div class="stats reveal">
+            <div class="stat">
+              <strong>2014</strong><span>Year founded</span>
+            </div>
+            <div class="stat">
+              <strong>12</strong><span>Years of impact</span>
+            </div>
+            <div class="stat">
+              <strong>FUTA</strong><span>Akure, Ondo State</span>
+            </div>
+            <div class="stat">
+              <strong>Civil</strong><span>Engineering students</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="legacy" id="legacy">
+        <div class="wrap">
+          <h2 class="title reveal">12 Years of NICE-SA FUTA Legacy</h2>
+          <p class="sub reveal">
+            A journey of leadership, excellence and impact.
+          </p>
+          <div class="tl">
+            <article class="reveal">
+              <em>2014</em>
+              <h3>Foundation</h3>
+              <p>
+                The association is founded by the first set of civil engineering
+                students.
+              </p>
+            </article>
+            <article class="reveal">
+              <em>2016</em>
+              <h3>Growth and expansion</h3>
+              <p>Membership grows and regular programs begin.</p>
+            </article>
+            <article class="reveal">
+              <em>2018</em>
+              <h3>Professional engagement</h3>
+              <p>Stronger ties with practicing engineers.</p>
+            </article>
+            <article class="reveal">
+              <em>2020</em>
+              <h3>Community and academic initiatives</h3>
+              <p>Peer tutoring and community projects.</p>
+            </article>
+            <article class="reveal">
+              <em>2022</em>
+              <h3>Leadership and innovation</h3>
+              <p>Leadership training and student-led technical work.</p>
+            </article>
+            <article class="reveal">
+              <em>2024</em>
+              <h3>Industry connections</h3>
+              <p>Site visits and mentorship partnerships.</p>
+            </article>
+            <article class="reveal">
+              <em>2026</em>
+              <h3>12 years of legacy</h3>
+              <p>A dozen years of building engineers and leaders.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="fg">
+        <div class="fb">
+          <h4>NICE-SA FUTA</h4>
+          <p>
+            The student association for civil engineers at the Federal
+            University of Technology, Akure.
+          </p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="lead.html">Leadership</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="blog.html">Blog/News</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="constitution.html">Constitution</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="#">Administrations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect With Us</h4>
+          <div class="soc">
+            <a href="#" aria-label="Instagram" title="Instagram"
+              ><svg viewBox="0 0 24 24">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <path d="M17.5 6.5h.01" /></svg
+            ></a>
+            <a href="#" aria-label="Facebook" title="Facebook"
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                /></svg
+            ></a>
+            <a href="#" aria-label="X" title="X"
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M4 4l6.8 9.2L4.2 20h1.9l5.6-5.6 4.1 5.6H20l-7.1-9.6L19.2 4h-1.9l-5.2 5.2L8.2 4z"
+                /></svg
+            ></a>
+            <a href="#" aria-label="LinkedIn" title="LinkedIn"
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" /></svg
+            ></a>
+            <a href="#" aria-label="WhatsApp" title="WhatsApp"
+              ><svg viewBox="0 0 24 24">
+                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z" />
+                <path
+                  d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-.8.8c-.9-.4-1.7-1.2-2.1-2.1l.8-.8-1-2z"
+                /></svg
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="copy">
+        <div>
+          © 2026 NICE-SA FUTA. All Rights Reserved. Federal University of
+          Technology, Akure.
+        </div>
+      </div>
+    </footer>
+
+    <button class="totop" id="totop" aria-label="Back to top">↑</button>
+
+    <script>
+      const toTopBtn = document.getElementById("totop");
+      addEventListener(
+        "scroll",
+        () => toTopBtn.classList.toggle("show", scrollY > 600),
+        { passive: true },
+      );
+      toTopBtn.onclick = () => scrollTo({ top: 0, behavior: "smooth" });
+      const bg = document.getElementById("bg"),
+        nv = document.getElementById("nv");
+      bg.onclick = () => {
+        const o = nv.classList.toggle("open");
+        bg.setAttribute("aria-expanded", o);
+      };
+      nv.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          nv.classList.remove("open");
+          bg.setAttribute("aria-expanded", false);
+        }),
+      );
+      addEventListener("resize", () => {
+        if (innerWidth > 1100) {
+          nv.classList.remove("open");
+          bg.setAttribute("aria-expanded", false);
+        }
+      });
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          }),
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
